@@ -1,19 +1,36 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Domain.Common.Model;
+using Domain.Common.Validation;
+using Domain.Common.Validation.ValidationItems;
 
 namespace Domain.Entities.Company
 {
     internal class Company
     {
-        //konstante definirat
+        public const int NameMaxLength = 150;
         public int Id { get; set; }
         public string Name { get; set; }
-        public async Task <Result<int?>> Create()
+        public async Task<Result<bool>> Create()
         {
+            var validationResult = await CreateOrUpdateValidation(ICompanyRepository companyRepository);
+            if (validationResult.HasError)
+            {
+                return new Result<bool>(false, validationResult);
+            }
 
+            await companyRepository.InsertAsync(this);
+
+            return new Result<bool>(true, validationResult);
         }
-        public async Task <ValidationResult> CreateOrUpdateValidation()
+        public async Task<ValidationResult> CreateOrUpdateValidation()
         {
-            if (Name?.Length > 150) { } //triba bit unique
+            var validationResult = new ValidationResult();
+
+            if (Name?.Length > NameMaxLength)
+            {
+                validationResult.AddValidationItem(ValidationItems.User.FirstNameMaxLength);
+            } // unikatno ime
+
+            return validationResult;
         }
     }
 }
