@@ -1,9 +1,12 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Domain.Common.Model;
+using Domain.Common.Validation;
+using Domain.Common.Validation.ValidationItems;
 
 namespace Domain.Entities.Users
 {
     internal class User
     {
+        public const int FirstNameMaxLength = 100, WebsiteMaxLength = 100, SurnameMaxLength = 100, StreetMaxLength = 150, CityMaxLength = 150;
         public int Id { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
@@ -16,21 +19,47 @@ namespace Domain.Entities.Users
         public decimal geoLat { get; set; }
         public decimal geoLng { get; set; }
         public string? website { get; set; }
-        public TimestampAttribute createdAt { get; set; }
-        public TimestampAttribute updatedAt { get; set; }
+        public DateTime createdAt { get; set; }
+        public DateTime updatedAt { get; set; }
         public bool isActive { get; set; } = true;
-        public async Task Create()
+        public async Task <Result<bool>> Create()
         {
+            var validationResult = await CreateOrUpdateValidation(IUserRepository userRepository);
+            if (validationResult.HasError)
+            {
+                return new Result<bool> (false, validationResult);
+            }
 
+            await userRepository.InsertAsync(this);
+
+            return new Result<bool> (true, validationResult);
         }
-        public async Task CreateOrUpdateValidation()
+        public async Task <ValidationResult> CreateOrUpdateValidation()
         {
-            if (Name?.Length > 100) { }
-            if (Surname?.Length > 100) { }
-            if (adressStreet?.Length > 150) { }
-            if (adressCity?.Length > 150) { }
-            if (website?.Length > 100) { } //valid url pattern 
+            var validationResult = new ValidationResult();
 
+            if (Name?.Length > FirstNameMaxLength)
+            {
+                validationResult.AddValidationItem(ValidationItems.User.FirstNameMaxLength); 
+            }
+            if (Surname?.Length > SurnameMaxLength)
+            {
+                validationResult.AddValidationItem(ValidationItems.User.SurnameMaxLength);
+            }
+            if (adressStreet?.Length > StreetMaxLength)
+            {
+                validationResult.AddValidationItem(ValidationItems.User.StreetMaxLength);
+            }
+            if (adressCity?.Length > CityMaxLength)
+            {
+                validationResult.AddValidationItem(ValidationItems.User.CityMaxLength);
+            }
+            if (website?.Length > WebsiteMaxLength)
+            {
+                validationResult.AddValidationItem(ValidationItems.User.WebsiteMaxLength);
+            } //valid url pattern 
+
+            return validationResult;
         } 
 
     }
