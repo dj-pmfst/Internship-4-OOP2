@@ -28,7 +28,7 @@ namespace Domain.Entities.Companies
 
             if (Name?.Length > NameMaxLength)
             {
-                validationResult.AddValidationItem(ValidationItems.User.FirstNameMaxLength);
+                validationResult.AddValidationItem(ValidationItems.Company.NameMaxLength);
             } // unikatno ime
 
             return validationResult;

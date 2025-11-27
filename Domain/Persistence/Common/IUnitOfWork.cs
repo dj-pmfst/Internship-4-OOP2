@@ -1,6 +1,6 @@
 ﻿namespace Domain.Persistence.Common
 {
-    internal interface IUnitOfWork
+    public interface IUnitOfWork
     {
         Task CreateTransaction();
         Task Commit();

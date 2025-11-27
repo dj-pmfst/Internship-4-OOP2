@@ -1,6 +1,7 @@
 ﻿namespace Infrastructure.Database
 {
-    internal class Schemas
+    internal static class Schemas
     {
+        public const string Default = "public";
     }
 }

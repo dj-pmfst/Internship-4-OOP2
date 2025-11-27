@@ -1,6 +1,7 @@
 ﻿using Domain.Entities.Companies;
 using Domain.Entities.Users;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage;
 
 namespace Infrastructure.Database
 {
@@ -16,7 +17,12 @@ namespace Infrastructure.Database
         public override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(ApplicationDBContext).Assembly.Assembly);
-            modelBuilder.HasDefaultSchema();
+            modelBuilder.HasDefaultSchema(Schemas.Default);
+        }
+
+        internal async Task<IDbContextTransaction> BeginTransactionAsync()
+        {
+            throw new NotImplementedException();
         }
     }
 }
