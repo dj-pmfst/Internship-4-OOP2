@@ -1,5 +1,6 @@
 <Solution>
   <Folder Name="/source/">
+    <Project Path="Api/Api.csproj" Id="a4cca782-32b3-4868-b233-d705133958f4" />
     <Project Path="Application/Application.csproj" Id="7718b8e0-b0e5-4af2-8d99-0a8367e94ffe" />
     <Project Path="Domain/Domain.csproj" />
     <Project Path="Infrastructure/Infrastructure.csproj" Id="9366fc08-3460-404c-b285-b790b104d657" />

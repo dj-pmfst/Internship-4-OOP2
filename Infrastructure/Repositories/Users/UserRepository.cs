@@ -14,9 +14,24 @@ namespace Infrastructure.Repositories.Users
         {
             _dapperManager = dapperManager;
         }
-        //public Task<User> GetById(int id)
-        //{
-        //    throw new NotImplementedException();
-        //}
+        public async Task<User> GetById(int id)
+        {
+            var sql =
+                """
+                SELECT
+                    id AS Id 
+                    name AS Name //fale ostala svojstva oml
+                FROM
+                    public.users
+                WHERE
+                    id=@Id 
+                """;
+            var paramaters = new
+            {
+                Id = id,
+            };
+
+            return await _dapperManager.QuerySingleAsync<User>(sql, paramaters)
+        }
     }
 }

@@ -305,6 +305,22 @@
         "runtime": {
           "bin/placeholder/Domain.dll": {}
         }
+      },
+      "Infrastructure/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "Application": "1.0.0",
+          "Dapper": "2.1.66",
+          "Microsoft.EntityFrameworkCore": "8.0.22",
+          "Npgsql.EntityFrameworkCore.PostgreSQL": "8.0.11"
+        },
+        "compile": {
+          "bin/placeholder/Infrastructure.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Infrastructure.dll": {}
+        }
       }
     }
   },
@@ -772,14 +788,16 @@
       "type": "project",
       "path": "../Domain/Domain.csproj",
       "msbuildProject": "../Domain/Domain.csproj"
+    },
+    "Infrastructure/1.0.0": {
+      "type": "project",
+      "path": "../Infrastructure/Infrastructure.csproj",
+      "msbuildProject": "../Infrastructure/Infrastructure.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net8.0": [
-      "Application >= 1.0.0",
-      "Dapper >= 2.1.66",
-      "Microsoft.EntityFrameworkCore >= 8.0.22",
-      "Npgsql.EntityFrameworkCore.PostgreSQL >= 8.0.11"
+      "Infrastructure >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -789,11 +807,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\DORA\\source\\repos\\Users app\\Infrastructure\\Infrastructure.csproj",
-      "projectName": "Infrastructure",
-      "projectPath": "C:\\Users\\DORA\\source\\repos\\Users app\\Infrastructure\\Infrastructure.csproj",
+      "projectUniqueName": "C:\\Users\\DORA\\source\\repos\\Users app\\Api\\Api.csproj",
+      "projectName": "Api",
+      "projectPath": "C:\\Users\\DORA\\source\\repos\\Users app\\Api\\Api.csproj",
       "packagesPath": "C:\\Users\\DORA\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\DORA\\source\\repos\\Users app\\Infrastructure\\obj\\",
+      "outputPath": "C:\\Users\\DORA\\source\\repos\\Users app\\Api\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -814,8 +832,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\DORA\\source\\repos\\Users app\\Application\\Application.csproj": {
-              "projectPath": "C:\\Users\\DORA\\source\\repos\\Users app\\Application\\Application.csproj"
+            "C:\\Users\\DORA\\source\\repos\\Users app\\Infrastructure\\Infrastructure.csproj": {
+              "projectPath": "C:\\Users\\DORA\\source\\repos\\Users app\\Infrastructure\\Infrastructure.csproj"
             }
           }
         }
@@ -834,20 +852,6 @@
     "frameworks": {
       "net8.0": {
         "targetAlias": "net8.0",
-        "dependencies": {
-          "Dapper": {
-            "target": "Package",
-            "version": "[2.1.66, )"
-          },
-          "Microsoft.EntityFrameworkCore": {
-            "target": "Package",
-            "version": "[8.0.22, )"
-          },
-          "Npgsql.EntityFrameworkCore.PostgreSQL": {
-            "target": "Package",
-            "version": "[8.0.11, )"
-          }
-        },
         "imports": [
           "net461",
           "net462",
@@ -860,6 +864,9 @@
         "assetTargetFallback": true,
         "warn": true,
         "frameworkReferences": {
+          "Microsoft.AspNetCore.App": {
+            "privateAssets": "none"
+          },
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }
