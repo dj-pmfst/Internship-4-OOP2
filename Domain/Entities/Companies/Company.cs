@@ -1,10 +1,11 @@
 ﻿using Domain.Common.Model;
 using Domain.Common.Validation;
 using Domain.Common.Validation.ValidationItems;
+using Domain.Persistence.Companies;
 
-namespace Domain.Entities.Company
+namespace Domain.Entities.Companies
 {
-    internal class Company
+    public class Company
     {
         public const int NameMaxLength = 150;
         public int Id { get; set; }

@@ -1,10 +1,11 @@
 ﻿using Domain.Common.Model;
 using Domain.Common.Validation;
 using Domain.Common.Validation.ValidationItems;
+using Domain.Persistence.Users;
 
 namespace Domain.Entities.Users
 {
-    internal class User
+    public class User
     {
         public const int FirstNameMaxLength = 100, WebsiteMaxLength = 100, SurnameMaxLength = 100, StreetMaxLength = 150, CityMaxLength = 150;
         public int Id { get; set; }

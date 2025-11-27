@@ -1,4 +1,5 @@
 ﻿using Application.Common.Model;
+using Domain.Persistence.Users;
 
 namespace Application.Common.Users.User
 {
@@ -20,5 +21,45 @@ namespace Application.Common.Users.User
     }
     internal class CreateUserRequestHandler : RequestHandler<CreateUserRequest, SuccessPostResponse>
     {
+        private readonly IUserUnitOfWork _unitOfWork;
+        public CreateUserRequestHandler(IUserUnitOfWork unitOfWork)
+        {
+            _unitOfWork = unitOfWork;
+        }
+
+        protected async override Task<Result<SuccessPostResponse>> HandleRequest(CreateUserRequest request, Result<SuccessPostResponse> result)
+        {
+            var user = new Domain.Entities.Users.User
+            {
+                Name = request.Name,
+                Surname = request.Surname,
+                Username = request.Username,
+                DoB = request.DoB,
+                Email = request.Email,
+                Password = request.Password,
+                adressStreet = request.adressStreet,
+                adressCity = request.adressCity,
+                geoLat = request.geoLat,
+                geoLng = request.geoLng,
+                website = request.website,
+            };
+
+            var validation = await user.Create(_unitOfWork.Repository);
+            result.SetValidationResult(validation);
+            
+            if (result.HasError)
+            {
+                return result;
+            }
+            await _unitOfWork.SaveAsync();
+
+            result.SetResult(new SuccessPostResponse(user.Id));
+            return result;
+        }
+
+        protected override Task<bool> IsAuthorized()
+        {
+            return Task.FromResult(true);
+        }
     }
 }

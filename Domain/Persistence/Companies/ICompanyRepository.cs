@@ -2,7 +2,7 @@
 
 namespace Domain.Persistence.Companies
 {
-    internal interface ICompanyRepository
+    public interface ICompanyRepository
     {
         Task<Company> GetById(int id);
     }

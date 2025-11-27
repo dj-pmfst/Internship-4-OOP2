@@ -2,7 +2,7 @@
 
 namespace Domain.Persistence.Users
 {
-    internal interface IUserRepository
+    public interface IUserRepository
     {
         Task<User> GetById(int id);
     }
