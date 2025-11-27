@@ -2,5 +2,6 @@
   <Folder Name="/source/">
     <Project Path="Application/Application.csproj" Id="7718b8e0-b0e5-4af2-8d99-0a8367e94ffe" />
     <Project Path="Domain/Domain.csproj" />
+    <Project Path="Infrastructure/Infrastructure.csproj" Id="9366fc08-3460-404c-b285-b790b104d657" />
   </Folder>
 </Solution>
