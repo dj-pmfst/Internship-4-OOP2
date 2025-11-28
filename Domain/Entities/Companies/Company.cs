@@ -10,9 +10,9 @@ namespace Domain.Entities.Companies
         public const int NameMaxLength = 150;
         public int Id { get; set; }
         public string Name { get; set; }
-        public async Task<Result<bool>> Create()
+        public async Task<Result<bool>> Create(ICompanyRepository companyRepository)
         {
-            var validationResult = await CreateOrUpdateValidation(ICompanyRepository companyRepository);
+            var validationResult = await CreateOrUpdateValidation();
             if (validationResult.HasError)
             {
                 return new Result<bool>(false, validationResult);

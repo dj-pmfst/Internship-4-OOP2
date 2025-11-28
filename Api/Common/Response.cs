@@ -1,4 +1,6 @@
 ﻿
+using Application.Common.Model;
+
 namespace Api.Common
 {
     public class Response<TValue> where TValue : class

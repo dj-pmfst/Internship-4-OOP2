@@ -1,4 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Domain.Common.Validation;
 
 namespace Domain.Common.Model
 {

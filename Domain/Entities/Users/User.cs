@@ -1,4 +1,5 @@
-﻿using Domain.Common.Model;
+﻿
+using Domain.Common.Model;
 using Domain.Common.Validation;
 using Domain.Common.Validation.ValidationItems;
 using Domain.Persistence.Users;
@@ -23,9 +24,9 @@ namespace Domain.Entities.Users
         public DateTime createdAt { get; set; }
         public DateTime updatedAt { get; set; }
         public bool isActive { get; set; } = true;
-        public async Task <Result<bool>> Create()
+        public async Task <Result<bool>> Create(IUserRepository userRepository)
         {
-            var validationResult = await CreateOrUpdateValidation(IUserRepository userRepository);
+            var validationResult = await CreateOrUpdateValidation();
             if (validationResult.HasError)
             {
                 return new Result<bool> (false, validationResult);

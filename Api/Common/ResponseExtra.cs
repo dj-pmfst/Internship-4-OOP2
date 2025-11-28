@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Application.Common.Model;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Api.Common
 {

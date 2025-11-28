@@ -38,7 +38,7 @@ namespace Application.Common.Model
         }
         public void SetValidationResult(ValidationResult validationResult)
         {
-            _errors?.AddRange(validationResult.ValidationItems.Where(v => v.ValidationSeverity == ValidationSeverity.Error).Select(v => ValidationResultItem.FormValidationResultItem(v)));
+            _error?.AddRange(validationResult.ValidationItems.Where(v => v.ValidationSeverity == ValidationSeverity.Error).Select(v => ValidationResultItem.FormValidationResultItem(v)));
         }
 
         public void SetUnauthorizedResult()

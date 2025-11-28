@@ -19,7 +19,7 @@ namespace Application.Common.Users.User
         public DateTime createdAt { get; set; }
         public DateTime updatedAt { get; set; }
     }
-    internal class CreateUserRequestHandler : RequestHandler<CreateUserRequest, SuccessPostResponse>
+    public class CreateUserRequestHandler : RequestHandler<CreateUserRequest, SuccessPostResponse>
     {
         private readonly IUserUnitOfWork _unitOfWork;
         public CreateUserRequestHandler(IUserUnitOfWork unitOfWork)

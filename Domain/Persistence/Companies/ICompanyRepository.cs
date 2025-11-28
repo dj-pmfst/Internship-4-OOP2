@@ -1,8 +1,9 @@
-﻿using Domain.Entities.Company;
+﻿using Domain.Entities.Companies;
+using Domain.Persistence.Common;
 
 namespace Domain.Persistence.Companies
 {
-    public interface ICompanyRepository
+    public interface ICompanyRepository : IRepository<Company, int>
     {
         Task<Company> GetById(int id);
     }
