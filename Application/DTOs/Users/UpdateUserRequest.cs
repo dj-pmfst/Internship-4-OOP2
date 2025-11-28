@@ -1,6 +1,6 @@
 ﻿namespace Application.DTOs.Users
 {
-    internal class UpdateUserRequest
+    public class UpdateUserRequest
     {
         public string Name { get; set; } = null!;
         public string Surname { get; set; } = null!;

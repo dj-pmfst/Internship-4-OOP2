@@ -1,7 +1,7 @@
 ﻿using Application.Common.Model;
 using Domain.Persistence.Users;
 
-namespace Application.Common.Users.User
+namespace Application.Common.Users.Handlers
 {
     public class CreateUserRequest
     {

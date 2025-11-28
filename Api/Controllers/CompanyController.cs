@@ -1,5 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Domain.Persistence.Companies;
+using Application.Common.Companies.Handlers;
+using Application.DTOs.Companies;
+using static Application.DTOs.Companies.AddCompanyRequest;
 
 namespace API.Controllers
 {
