@@ -1,4 +1,5 @@
 ﻿using Application.Common.Model;
+using Domain.Common.Validation;
 using Domain.Persistence.Users;
 
 namespace Application.Common.Users.Handlers
@@ -44,13 +45,13 @@ namespace Application.Common.Users.Handlers
                 website = request.website,
             };
 
-            var validation = await user.Create(_unitOfWork.Repository);
-            result.SetValidationResult(validation);
-            
+            var domainResult = await user.Create(_unitOfWork.Repository);
+
+            result.SetValidationResult(domainResult.ValidationResult);
+
             if (result.HasError)
-            {
                 return result;
-            }
+
             await _unitOfWork.SaveAsync();
 
             result.SetResult(new SuccessPostResponse(user.Id));

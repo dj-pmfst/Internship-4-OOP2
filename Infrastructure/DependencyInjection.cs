@@ -12,13 +12,14 @@ namespace Infrastructure
 {
     public static class DependencyInjection
     {
-        public static IServiceProvider AddInfrastracture(this IServiceProvider serviceProvider, IConfiguration configuration)
+        // Correct: IServiceCollection
+        public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
         {
-            AddDatabase(serviceProvider, configuration);
-            return serviceProvider;
+            AddDatabase(services, configuration);
+            return services;
         }
 
-        private static AddDatabase(IServiceProvider serviceProvider, IConfiguration configuration)
+        private static void AddDatabase(IServiceCollection services, IConfiguration configuration)
         {
             string? connectionString = configuration.GetConnectionString("Database");
             if (string.IsNullOrEmpty(connectionString))
@@ -26,17 +27,17 @@ namespace Infrastructure
                 throw new ArgumentNullException(nameof(connectionString));
             }
 
-            serviceProvider.AddDbContext<ApplicationDBContext>(options => options.UseNpgsql(connectionString));
+            services.AddDbContext<ApplicationDBContext>(options => options.UseNpgsql(connectionString));
 
-            serviceProvider.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
 
-            serviceProvider.AddScoped<IUserRepository, UserRepository>();
-            serviceProvider.AddScoped<IUserUnitOfWork, UserUnitOfWork>();
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IUserUnitOfWork, UserUnitOfWork>();
 
-            serviceProvider.AddScoped<ICompanyRepository, CompanyRepository>();
-            serviceProvider.AddScoped<ICompanyUnitOfWork, CompanyUnitOfWork>();
+            services.AddScoped<ICompanyRepository, CompanyRepository>();
+            services.AddScoped<ICompanyUnitOfWork, CompanyUnitOfWork>();
 
-            serviceProvider.AddSingleton<IDapperManager>(sp =>
+            services.AddSingleton<IDapperManager>(sp =>
             {
                 var config = sp.GetRequiredService<IConfiguration>();
                 string cs = config.GetConnectionString("Database");

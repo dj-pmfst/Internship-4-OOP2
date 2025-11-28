@@ -6,12 +6,17 @@ namespace Infrastructure.Repositories.Users
     internal class UserUnitOfWork : IUserUnitOfWork
     {
         private readonly ApplicationDBContext _dbContext;
-        public IUserRepository UserRepository { get; set; }
+        public IUserRepository Repository { get; }
 
         public UserUnitOfWork(ApplicationDBContext dbContext, IUserRepository userRepository)
         {
             _dbContext = dbContext;
-            UserRepository = userRepository;
+            Repository = userRepository;
         }
+        public async Task SaveAsync()
+        {
+            await _dbContext.SaveChangesAsync();
+        }
+
     }
 }

@@ -14,9 +14,9 @@ namespace Infrastructure.Database
         }
         public DbSet<User> Users { get; set; }
         public DbSet<Company> Companies { get; set; }
-        public override void OnModelCreating(ModelBuilder modelBuilder)
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfigurationsFromAssembly(typeof(ApplicationDBContext).Assembly.Assembly);
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(ApplicationDBContext).Assembly);
             modelBuilder.HasDefaultSchema(Schemas.Default);
         }
 

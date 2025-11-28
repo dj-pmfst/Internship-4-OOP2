@@ -2,5 +2,6 @@
 {
     public class ImportExternalUsersRequest
     {
+        //dodat jos za ovo
     }
 }

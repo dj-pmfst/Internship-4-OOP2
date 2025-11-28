@@ -14,7 +14,7 @@ namespace Application.Common.Users.Handlers
             var user = await _unitOfWork.Repository.GetByIdAsync(request.Id);
             if (user == null)
             {
-                result.SetValidationResult(Domain.Common.Validation.ValidationItems.Common.NotFound); //??????????
+                result.SetValidationResult(error); //??????????
                 return result;
             }
 

@@ -1,4 +1,5 @@
 ﻿using Application.Common.Model;
+using Domain.Common.Validation;
 using Domain.Persistence.Companies;
 using static Application.DTOs.Companies.AddCompanyRequest;
 
@@ -18,7 +19,7 @@ namespace Application.Common.Companies.Handlers
             var company = await _unitOfWork.Repository.GetByIdAsync(request.Id);
             if (company == null)
             {
-                result.SetValidationResult(Domain.Common.Validation.ValidationItems.Common.NotFound);
+                result.SetValidationResult(ValidationSeverity.); //ovo popravit
                 return result;
             }
 

@@ -16,24 +16,24 @@ namespace Infrastructure
         }
         public void Delete(TEntity? entity)
         {
-            if (entity == null)
+            if (entity != null)
             {
                 _dbSet.Remove(entity);
             }
         }
 
-        public async Task DeleteAsync(TId id)
+        public async Task DeleteAsync(TEntity entity)
         {
-            var entity = await _dbSet.FindAsync(id);
-            if (entity == null)
+            if (entity != null)
             {
                 _dbSet.Remove(entity);
+                await _context.SaveChangesAsync();
             }
         }
 
-        public Task<GetAllResponse<TEntity>> GetAll()
+        public async Task<GetAllResponse<TEntity>> GetAll()
         {
-            var entities = _dbSet.ToListAsync();
+            var entities = await _dbSet.ToListAsync(); 
             return new GetAllResponse<TEntity> { Values = entities };
         }
 
@@ -47,5 +47,25 @@ namespace Infrastructure
         {
             _dbSet.Update(entity);
         }
+        public async Task UpdateAsync(TEntity entity)
+        {
+            _dbSet.Update(entity);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task<TEntity?> GetByIdAsync(TId id)
+        {
+            return await _dbSet.FindAsync(id);
+        }
+
+        public async Task DeleteByIdAsync(TId id)
+        {
+            var entity = await _dbSet.FindAsync(id);
+            if (entity != null)
+                _dbSet.Remove(entity);
+
+            await _context.SaveChangesAsync();
+        }
+
     }
 }

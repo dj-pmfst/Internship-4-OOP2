@@ -12,7 +12,7 @@ namespace Domain.Entities.Companies
         public string Name { get; set; }
         public async Task<Result<bool>> Create(ICompanyRepository companyRepository)
         {
-            var validationResult = await CreateOrUpdateValidation();
+            var validationResult = await CreateOrUpdateValidation(companyRepository);
             if (validationResult.HasError)
             {
                 return new Result<bool>(false, validationResult);
@@ -22,7 +22,7 @@ namespace Domain.Entities.Companies
 
             return new Result<bool>(true, validationResult);
         }
-        public async Task<ValidationResult> CreateOrUpdateValidation()
+        public async Task<ValidationResult> CreateOrUpdateValidation(ICompanyRepository repository)
         {
             var validationResult = new ValidationResult();
 

@@ -31,7 +31,7 @@ namespace Infrastructure.Repositories.Users
                 Id = id,
             };
 
-            return await _dapperManager.QuerySingleAsync<User>(sql, paramaters)
+            return await _dapperManager.QuerySingleAsync<User>(sql, paramaters);
         }
     }
 }

@@ -14,5 +14,10 @@ namespace Infrastructure.Repositories.Companies
         {
             _dapperManager = dapperManager;
         }
+        public async Task<Company> GetById(int id)
+        {
+            return await _applicationDBContext.Set<Company>().FindAsync(id) ?? null!;
+        }
+
     }
 }

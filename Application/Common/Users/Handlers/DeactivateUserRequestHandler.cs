@@ -4,7 +4,7 @@ using Domain.Persistence.Users;
 
 namespace Application.Common.Users.Handlers
 {
-    public class DeactivateUserRequestHandler 
+    public class DeactivateUserRequestHandler : RequestHandler<DeactivateUserRequest, SuccessResponse>
     {
         private readonly IUserUnitOfWork _unitOfWork;
         public DeactivateUserRequestHandler(IUserUnitOfWork unitOfWork) => _unitOfWork = unitOfWork;
@@ -14,7 +14,7 @@ namespace Application.Common.Users.Handlers
             var user = await _unitOfWork.Repository.GetByIdAsync(request.Id);
             if (user == null)
             {
-                result.SetValidationResult(Domain.Common.Validation.ValidationItems.Common.NotFound);
+                result.SetValidationResult(NotFound); //popravit!!!
                 return result;
             }
 
@@ -26,5 +26,9 @@ namespace Application.Common.Users.Handlers
             return result;
         }
 
+        protected override Task<bool> IsAuthorized()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

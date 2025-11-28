@@ -18,11 +18,11 @@ namespace Application.Common.Companies.Handlers
             var company = await _unitOfWork.Repository.GetByIdAsync(request.Id);
             if (company == null)
             {
-                result.SetValidationResult(Domain.Common.Validation.ValidationItems.Common.NotFound);
+                result.SetValidationResult(error);
                 return result;
             }
 
-            await _unitOfWork.Repository.DeleteAsync(request.Id);
+            await _unitOfWork.Repository.DeleteByIdAsync(request.Id);
             await _unitOfWork.SaveAsync();
 
             result.SetResult(new SuccessResponse(true));

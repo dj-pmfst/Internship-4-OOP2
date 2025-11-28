@@ -16,7 +16,7 @@ namespace Application.Common.Users.Handlers
 
         protected override async Task<Result<GetResponse<User>>> HandleRequest(GetAllUsersRequest request, Result<GetResponse<User>> result)
         {
-            // If an Id was supplied, return single as list; else return all
+
             if (request.Id.HasValue)
             {
                 var item = await _unitOfWork.Repository.GetByIdAsync(request.Id.Value);
@@ -28,10 +28,10 @@ namespace Application.Common.Users.Handlers
                 return result;
             }
 
-            var users = await _unitOfWork.Repository.GetAllAsync();
+            var repoResult = await _unitOfWork.Repository.GetAll();
             var getResponse = new GetResponse<User>
             {
-                Items = users.ToList()
+                Items = repoResult.Values.ToList()
             };
 
             result.SetResult(getResponse);

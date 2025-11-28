@@ -17,21 +17,21 @@ namespace Application.Common.Companies.Handlers
 
         protected async override Task<Result<SuccessPostResponse>> HandleRequest(CreateCompanyRequest request, Result<SuccessPostResponse> result)
         {
-            var user = new Domain.Entities.Companies.Company
+            var company = new Domain.Entities.Companies.Company
             {
                 Name = request.Name,
             };
 
-            var validation = await user.Create(_unitOfWork.Repository);
-            result.SetValidationResult(validation);
+            var domainResult = await company.Create(_unitOfWork.Repository);
+
+            result.SetValidationResult(domainResult.ValidationResult);
 
             if (result.HasError)
-            {
                 return result;
-            }
+
             await _unitOfWork.SaveAsync();
 
-            result.SetResult(new SuccessPostResponse(user.Id));
+            result.SetResult(new SuccessPostResponse(company.Id));
             return result;
         }
 
