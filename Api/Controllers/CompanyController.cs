@@ -7,7 +7,6 @@ namespace API.Controllers
     [Route("api/companies")]
     public class CompaniesController : ControllerBase
     {
-        // GET /api/companies?username=x&password=y
         [HttpGet]
         public async Task<IActionResult> GetAll(
             [FromServices] ICompanyUnitOfWork unitOfWork,
@@ -21,7 +20,6 @@ namespace API.Controllers
             return result.ToActionResult(this);
         }
 
-        // GET /api/companies/{id}?username=x&password=y
         [HttpGet("{id:int}")]
         public async Task<IActionResult> Get(
             [FromServices] ICompanyUnitOfWork unitOfWork,
@@ -36,7 +34,6 @@ namespace API.Controllers
             return result.ToActionResult(this);
         }
 
-        // POST /api/companies
         [HttpPost]
         public async Task<IActionResult> Create(
             [FromServices] ICompanyUnitOfWork unitOfWork,
@@ -48,7 +45,6 @@ namespace API.Controllers
             return result.ToActionResult(this);
         }
 
-        // PUT /api/companies/{id}
         [HttpPut("{id:int}")]
         public async Task<IActionResult> Update(
             [FromServices] ICompanyUnitOfWork unitOfWork,
@@ -63,7 +59,6 @@ namespace API.Controllers
             return result.ToActionResult(this);
         }
 
-        // DELETE /api/companies/{id}?username=x&password=y
         [HttpDelete("{id:int}")]
         public async Task<IActionResult> Delete(
             [FromServices] ICompanyUnitOfWork unitOfWork,

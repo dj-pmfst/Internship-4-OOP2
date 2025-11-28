@@ -31,7 +31,7 @@ namespace API.Controllers
             var result = await requestHandler.ProcessAuthorizedRequestAsync(request);
             return result.ToActionResult(this);
         }
-        // PUT /api/users/{id}
+
         [HttpPut("{id:int}")]
         public async Task<IActionResult> Update(
             [FromServices] IUserUnitOfWork unitOfWork,
@@ -46,7 +46,6 @@ namespace API.Controllers
             return result.ToActionResult(this);
         }
 
-        // PUT /api/users/deactivate/{id}
         [HttpPut("deactivate/{id:int}")]
         public async Task<IActionResult> Deactivate(
             [FromServices] IUserUnitOfWork unitOfWork,
@@ -58,7 +57,6 @@ namespace API.Controllers
             return result.ToActionResult(this);
         }
 
-        // PUT /api/users/activate/{id}
         [HttpPut("activate/{id:int}")]
         public async Task<IActionResult> Activate(
             [FromServices] IUserUnitOfWork unitOfWork,
@@ -70,7 +68,6 @@ namespace API.Controllers
             return result.ToActionResult(this);
         }
 
-        // DELETE /api/users/{id}
         [HttpDelete("{id:int}")]
         public async Task<IActionResult> Delete(
             [FromServices] IUserUnitOfWork unitOfWork,
@@ -82,7 +79,6 @@ namespace API.Controllers
             return result.ToActionResult(this);
         }
 
-        // POST /api/users/import-external
         [HttpPost("import-external")]
         public async Task<IActionResult> ImportExternal([FromServices] IUserUnitOfWork unitOfWork)
         {
