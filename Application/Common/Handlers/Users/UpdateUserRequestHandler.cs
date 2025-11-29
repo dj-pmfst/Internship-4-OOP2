@@ -44,7 +44,7 @@ namespace Application.Common.Handlers.Users
                 website = request.website,
             };
 
-            var validation = await user.CreateOrUpdateValidation();
+            var validation = await user.CreateOrUpdateValidation(_unitOfWork.Repository);
             result.SetValidationResult(validation);
             if (result.HasError) return result;
 

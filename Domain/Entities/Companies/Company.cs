@@ -26,6 +26,12 @@ namespace Domain.Entities.Companies
         {
             var validationResult = new ValidationResult();
 
+            if (string.IsNullOrWhiteSpace(Name))
+                AddValidationResult(validationResult, ValidationErrors.FieldIsRequired("Name"));
+
+            if (validationResult.HasError)
+                return validationResult;
+
             if (Name?.Length > NameMaxLength)
             {
                 validationResult.AddValidationItem(ValidationItems.Company.NameMaxLength);
@@ -37,6 +43,12 @@ namespace Domain.Entities.Companies
             }
 
             return validationResult;
+        }
+
+        private void AddValidationResult(ValidationResult main, ValidationResult toAdd)
+        {
+            foreach (var item in toAdd.ValidationItems)
+                main.AddValidationItem(item);
         }
     }
 }

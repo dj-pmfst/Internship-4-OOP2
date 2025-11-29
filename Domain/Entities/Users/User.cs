@@ -42,6 +42,36 @@ namespace Domain.Entities.Users
         {
             var validationResult = new ValidationResult();
 
+            if (string.IsNullOrWhiteSpace(Name))
+                AddValidationResult(validationResult, ValidationErrors.FieldIsRequired("Name"));
+
+            if (string.IsNullOrWhiteSpace(Surname))
+                AddValidationResult(validationResult, ValidationErrors.FieldIsRequired("Surname"));
+
+            if (string.IsNullOrWhiteSpace(Username))
+                AddValidationResult(validationResult, ValidationErrors.FieldIsRequired("Username"));
+
+            if (string.IsNullOrWhiteSpace(Email))
+                AddValidationResult(validationResult, ValidationErrors.FieldIsRequired("Email"));
+
+            if (string.IsNullOrWhiteSpace(Password))
+                AddValidationResult(validationResult, ValidationErrors.FieldIsRequired("Password"));
+
+            if (string.IsNullOrWhiteSpace(adressStreet))
+                AddValidationResult(validationResult, ValidationErrors.FieldIsRequired("Address Street"));
+
+            if (string.IsNullOrWhiteSpace(adressCity))
+                AddValidationResult(validationResult, ValidationErrors.FieldIsRequired("Address City"));
+
+            if (geoLat == 0)
+                AddValidationResult(validationResult, ValidationErrors.FieldIsRequired("Latitude"));
+
+            if (geoLng == 0)
+                AddValidationResult(validationResult, ValidationErrors.FieldIsRequired("Longitude"));
+
+            if (validationResult.HasError)
+                return validationResult;
+
             if (Name?.Length > FirstNameMaxLength)
             {
                 validationResult.AddValidationItem(ValidationItems.User.FirstNameMaxLength); 
@@ -83,7 +113,13 @@ namespace Domain.Entities.Users
             }
 
             return validationResult;
-        } 
+        }
+
+        private void AddValidationResult(ValidationResult main, ValidationResult toAdd)
+        {
+            foreach (var item in toAdd.ValidationItems)
+                main.AddValidationItem(item);
+        }
 
     }
 }
