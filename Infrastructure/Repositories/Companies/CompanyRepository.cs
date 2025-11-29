@@ -25,7 +25,7 @@ namespace Infrastructure.Repositories.Companies
                 FROM Companies 
                 WHERE Name = @Name AND (@Id IS NULL OR Id <> @Id)";
 
-            var count = await _dapper.QuerySingleAsync<int>(sql, new { Name = name, Id = id });
+            var count = await _dapperManager.QuerySingleAsync<int>(sql, new { Name = name, Id = id });
 
             return count == 0;
         }

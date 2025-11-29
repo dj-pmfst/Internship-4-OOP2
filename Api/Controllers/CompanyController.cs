@@ -1,10 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Domain.Persistence.Companies;
-using Application.Common.Companies.Handlers;
 using Application.DTOs.Companies;
 using static Application.DTOs.Companies.AddCompanyRequest;
-using Application.Common.Handlers.Companies.Handlers;
 using Application.Common.Handlers.Companies;
+using Api.Common;
 
 namespace API.Controllers
 {
