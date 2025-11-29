@@ -8,5 +8,8 @@ namespace Domain.Persistence.Users
         Task<User> GetById(int id);
         Task<bool> IsUsernameUniqueAsync(string username, int? ignoreUserId = null);
         Task<bool> IsEmailUniqueAsync(string email, int? ignoreUserId = null);
+        Task<bool> IsWithin3KmAsync(decimal geoLat, decimal geoLng, int? excludeUserId = null);
+        Task<User?> GetByUsernameAndPasswordAsync(string username, string password);
+
     }
 }

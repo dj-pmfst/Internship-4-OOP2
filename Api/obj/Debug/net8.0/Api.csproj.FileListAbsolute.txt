@@ -84,3 +84,13 @@ C:\Users\DORA\source\repos\Users app\Api\obj\Debug\net8.0\refint\Api.dll
 C:\Users\DORA\source\repos\Users app\Api\obj\Debug\net8.0\Api.pdb
 C:\Users\DORA\source\repos\Users app\Api\obj\Debug\net8.0\Api.genruntimeconfig.cache
 C:\Users\DORA\source\repos\Users app\Api\obj\Debug\net8.0\ref\Api.dll
+C:\Users\DORA\source\repos\Users app\Api\bin\Debug\net8.0\Microsoft.Extensions.Configuration.dll
+C:\Users\DORA\source\repos\Users app\Api\bin\Debug\net8.0\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\DORA\source\repos\Users app\Api\bin\Debug\net8.0\Microsoft.Extensions.Configuration.Binder.dll
+C:\Users\DORA\source\repos\Users app\Api\bin\Debug\net8.0\Microsoft.Extensions.Diagnostics.dll
+C:\Users\DORA\source\repos\Users app\Api\bin\Debug\net8.0\Microsoft.Extensions.Diagnostics.Abstractions.dll
+C:\Users\DORA\source\repos\Users app\Api\bin\Debug\net8.0\Microsoft.Extensions.Http.dll
+C:\Users\DORA\source\repos\Users app\Api\bin\Debug\net8.0\Microsoft.Extensions.Options.ConfigurationExtensions.dll
+C:\Users\DORA\source\repos\Users app\Api\bin\Debug\net8.0\Microsoft.Extensions.Primitives.dll
+C:\Users\DORA\source\repos\Users app\Api\bin\Debug\net8.0\System.Diagnostics.DiagnosticSource.dll
+C:\Users\DORA\source\repos\Users app\Api\obj\Debug\net8.0\Api.MvcApplicationPartsAssemblyInfo.cs

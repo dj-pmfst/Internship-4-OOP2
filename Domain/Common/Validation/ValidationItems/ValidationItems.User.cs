@@ -68,6 +68,12 @@
                 severity: ValidationSeverity.Error,
                 type: ValidationType.FormalValidation
              );
+
+            public static readonly ValidationItem UserTooFar = new ValidationItem(
+                code: $"{CodePrefix}10",
+                message: "Lokacija korisnika mora biti unutar 3km.",
+                severity: ValidationSeverity.Error
+             );
         }
     }
 }

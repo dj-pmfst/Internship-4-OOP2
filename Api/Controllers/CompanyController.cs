@@ -1,9 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Domain.Persistence.Companies;
-using Application.DTOs.Companies;
-using static Application.DTOs.Companies.AddCompanyRequest;
+﻿using Api.Common;
 using Application.Common.Handlers.Companies;
-using Api.Common;
+using Application.DTOs.Companies;
+using Domain.Persistence.Companies;
+using Domain.Persistence.Users;
+using Microsoft.AspNetCore.Mvc;
+using static Application.DTOs.Companies.AddCompanyRequest;
 
 namespace API.Controllers
 {
@@ -14,11 +15,12 @@ namespace API.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll(
             [FromServices] ICompanyUnitOfWork unitOfWork,
+            [FromServices] IUserRepository userRepository,
             [FromQuery] string username,
             [FromQuery] string password)
         {
             var request = new GetAllCompaniesRequest(username, password);
-            var handler = new GetAllCompaniesRequestHandler(unitOfWork);
+            var handler = new GetAllCompaniesRequestHandler(unitOfWork, userRepository);
             var result = await handler.ProcessAuthorizedRequestAsync(request);
 
             return result.ToActionResult(this);
@@ -27,12 +29,13 @@ namespace API.Controllers
         [HttpGet("{id:int}")]
         public async Task<IActionResult> Get(
             [FromServices] ICompanyUnitOfWork unitOfWork,
+            [FromServices] IUserRepository userRepository,
             [FromRoute] int id,
             [FromQuery] string username,
             [FromQuery] string password)
         {
             var request = new GetCompanyRequest(id, username, password);
-            var handler = new GetCompanyRequestHandler(unitOfWork);
+            var handler = new GetCompanyRequestHandler(unitOfWork, userRepository);
             var result = await handler.ProcessAuthorizedRequestAsync(request);
 
             return result.ToActionResult(this);

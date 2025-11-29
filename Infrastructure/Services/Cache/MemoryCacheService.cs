@@ -20,4 +20,16 @@ public class MemoryCacheService : ICacheService
         _cache.TryGetValue(key, out T? value);
         return Task.FromResult(value);
     }
+
+    public async Task SetAsync<T>(string key, T value, TimeSpan? absoluteExpirationRelativeToNow = null)
+    {
+        var options = new MemoryCacheEntryOptions
+        {
+            AbsoluteExpiration = DateTime.Today.AddDays(1)
+        };
+
+        _cache.Set(key, value, options);
+        await Task.CompletedTask;
+    }
+
 }

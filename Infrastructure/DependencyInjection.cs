@@ -1,5 +1,4 @@
-﻿using Domain.Persistence.Common;
-using Domain.Persistence.Companies;
+﻿using Domain.Persistence.Companies;
 using Domain.Persistence.Users;
 using Infrastructure.Database;
 using Infrastructure.Repositories.Companies;
@@ -12,37 +11,51 @@ namespace Infrastructure
 {
     public static class DependencyInjection
     {
-        // Correct: IServiceCollection
         public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
         {
-            AddDatabase(services, configuration);
-            return services;
-        }
 
-        private static void AddDatabase(IServiceCollection services, IConfiguration configuration)
-        {
             string? connectionString = configuration.GetConnectionString("Database");
             if (string.IsNullOrEmpty(connectionString))
-            {
                 throw new ArgumentNullException(nameof(connectionString));
-            }
 
-            services.AddDbContext<ApplicationDBContext>(options => options.UseNpgsql(connectionString));
+            services.AddDbContext<ApplicationDBContext>(options =>
+                options.UseNpgsql(connectionString));
 
-            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddSingleton<IDapperManager>(sp => new DapperManager(connectionString));
 
-            services.AddScoped<IUserRepository, UserRepository>();
-            services.AddScoped<IUserUnitOfWork, UserUnitOfWork>();
-
-            services.AddScoped<ICompanyRepository, CompanyRepository>();
-            services.AddScoped<ICompanyUnitOfWork, CompanyUnitOfWork>();
-
-            services.AddSingleton<IDapperManager>(sp =>
+            services.AddScoped<IUserRepository, UserRepository>(sp =>
             {
-                var config = sp.GetRequiredService<IConfiguration>();
-                string cs = config.GetConnectionString("Database");
-                return new DapperManager(cs);
-            }); 
+                var ctx = sp.GetRequiredService<ApplicationDBContext>();
+                var dapper = sp.GetRequiredService<IDapperManager>();
+                return new UserRepository(ctx, dapper);
+            });
+
+            services.AddScoped<ICompanyRepository, CompanyRepository>(sp =>
+            {
+                var ctx = sp.GetRequiredService<ApplicationDBContext>();
+                var dapper = sp.GetRequiredService<IDapperManager>();
+                return new CompanyRepository(ctx, dapper);
+            });
+
+            services.AddScoped<IUserUnitOfWork>(sp =>
+            {
+                var dbContext = sp.GetRequiredService<ApplicationDBContext>();
+                var repo = sp.GetRequiredService<IUserRepository>();
+                return new UserUnitOfWork(dbContext, repo);
+            });
+
+            services.AddScoped<ICompanyUnitOfWork>(sp =>
+            {
+                var dbContext = sp.GetRequiredService<ApplicationDBContext>();
+                var repo = sp.GetRequiredService<ICompanyRepository>();
+                return new CompanyUnitOfWork(dbContext, repo);
+            });
+
+            services.AddSingleton<ICacheService, MemoryCacheService>();
+
+            services.AddHttpClient<IExternalUserApiClient, ExternalUserApiClient>();
+
+            return services;
         }
     }
 }

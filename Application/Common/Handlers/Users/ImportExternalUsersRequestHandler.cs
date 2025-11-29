@@ -22,21 +22,29 @@ namespace Application.Common.Handlers.Users
         }
 
         protected override async Task<Result<SuccessResponse>> HandleRequest(
-            ImportExternalUsersRequest request,
-            Result<SuccessResponse> result)
+                ImportExternalUsersRequest request,
+                Result<SuccessResponse> result)
         {
 
             var cachedUsers = await _cache.GetAsync<List<ExternalUserDto>>("external_users");
 
-            var externalUsers = cachedUsers ??
-                                await _externalApi.GetExternalUsersAsync();
-
-            if (cachedUsers == null)
+            List<ExternalUserDto> externalUsers;
+            if (cachedUsers != null)
             {
+                externalUsers = cachedUsers;
+            }
+            else
+            {
+                externalUsers = await _externalApi.GetExternalUsersAsync();
+
+                var now = DateTime.Now;
+                var endOfDay = DateTime.Today.AddDays(1);
+                var timeUntilEndOfDay = endOfDay - now;
+
                 await _cache.SetAsync(
                     "external_users",
                     externalUsers,
-                    TimeSpan.FromMinutes(10)
+                    timeUntilEndOfDay
                 );
             }
 
@@ -52,6 +60,10 @@ namespace Application.Common.Handlers.Users
                     Email = ext.Email,
                     Username = ext.Username,
                     website = ext.Website,
+                    Password = Guid.NewGuid().ToString(), 
+                    createdAt = DateTime.UtcNow,
+                    updatedAt = DateTime.UtcNow,
+                    isActive = true
                 };
 
                 await _users.InsertAsync(user);

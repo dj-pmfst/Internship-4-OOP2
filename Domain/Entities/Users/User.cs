@@ -76,34 +76,47 @@ namespace Domain.Entities.Users
             {
                 validationResult.AddValidationItem(ValidationItems.User.FirstNameMaxLength); 
             }
+
             if (Surname?.Length > SurnameMaxLength)
             {
                 validationResult.AddValidationItem(ValidationItems.User.SurnameMaxLength);
             }
+
             if (!await userRepository.IsUsernameUniqueAsync(Username, Id))
             {
                 validationResult = ValidationErrors.AlreadyExists("Username");
             }
+
             if (adressStreet?.Length > StreetMaxLength)
             {
                 validationResult.AddValidationItem(ValidationItems.User.StreetMaxLength);
             }
+
             if (adressCity?.Length > CityMaxLength)
             {
                 validationResult.AddValidationItem(ValidationItems.User.CityMaxLength);
             }
+
             if (website?.Length > WebsiteMaxLength)
             {
                 validationResult.AddValidationItem(ValidationItems.User.WebsiteMaxLength);
             }
+
             if (!ValidationHelpers.IsValidUrl(website))
             {
                 validationResult.AddValidationItem(ValidationItems.User.URLInvalid);
             }
+
             if (!ValidationHelpers.IsValidEmail(Email))
             {
                 validationResult.AddValidationItem(ValidationItems.User.EmailInvalid);
             }
+
+            if (!await userRepository.IsWithin3KmAsync(geoLat, geoLng))
+            {
+                validationResult.AddValidationItem(ValidationItems.User.UserTooFar);
+            }
+
 
             if (!await userRepository.IsEmailUniqueAsync(Email, Id))
             {
