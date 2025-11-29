@@ -1,6 +1,6 @@
 ﻿namespace Application.DTOs.Users
 {
-    internal class CreateUserRequest
+    public class CreateUserRequest
     {
         public string Name { get; set; } = null!;
         public string Surname { get; set; } = null!;

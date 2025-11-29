@@ -19,7 +19,7 @@ namespace Application.Common.Handlers.Companies
             var company = await _unitOfWork.Repository.GetByIdAsync(request.Id);
             if (company == null)
             {
-                result.SetValidationResult(ValidationSeverity.); //ovo popravit
+                result.SetValidationResult(ValidationErrors.NotFound("Company"));
                 return result;
             }
 

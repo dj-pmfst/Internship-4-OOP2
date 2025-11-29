@@ -7,7 +7,7 @@ namespace Application.Common.Handlers.Companies
     {
         public string Name { get; set; }
     }
-    internal class CreateCompanyRequestHandler : RequestHandler<CreateCompanyRequest, SuccessPostResponse>
+    public class CreateCompanyRequestHandler : RequestHandler<CreateCompanyRequest, SuccessPostResponse>
     {
         private readonly ICompanyUnitOfWork _unitOfWork;
         public CreateCompanyRequestHandler(ICompanyUnitOfWork unitOfWork)

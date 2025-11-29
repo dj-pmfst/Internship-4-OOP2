@@ -1,5 +1,6 @@
 ﻿using Application.Common.Model;
 using Application.DTOs.Users;
+using Domain.Common.Validation;
 using Domain.Persistence.Users;
 
 namespace Application.Common.Handlers.Users
@@ -14,7 +15,7 @@ namespace Application.Common.Handlers.Users
             var user = await _unitOfWork.Repository.GetByIdAsync(request.Id);
             if (user == null)
             {
-                result.SetValidationResult(NotFound); //popravit!!!
+                result.SetValidationResult(ValidationErrors.NotFound("User"));
                 return result;
             }
 

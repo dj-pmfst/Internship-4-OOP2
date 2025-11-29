@@ -5,7 +5,7 @@ using Domain.Persistence.Companies;
 
 namespace Application.Common.Handlers.Companies
 {
-    public class GetCompanyRequestHandler
+    public class GetCompanyRequestHandler : RequestHandler<GetCompanyRequest, GetResponse<Company>>
     {
         private readonly ICompanyUnitOfWork _unitOfWork;
 

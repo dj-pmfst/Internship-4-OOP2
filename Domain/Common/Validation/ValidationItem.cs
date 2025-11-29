@@ -6,5 +6,14 @@
         public ValidationType ValidationType { get; set; }
         public string Code { get; set; }
         public string Message { get; set; }
+
+        public ValidationItem(string code, string message, ValidationSeverity severity,
+                      ValidationType type = ValidationType.BussinessRule)
+        {
+            Code = code;
+            Message = message;
+            ValidationSeverity = severity;
+            ValidationType = type;
+        }
     }
 }

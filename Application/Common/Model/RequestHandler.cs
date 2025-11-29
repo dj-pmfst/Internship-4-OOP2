@@ -8,7 +8,7 @@
         {
             var result = new Result<TResult>();
             
-            if (await IsAuthorized() == false)
+            if (!await IsAuthorized())
             {
                 result.SetUnauthorizedResult();
                 return result;

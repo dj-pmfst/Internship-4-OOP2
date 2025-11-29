@@ -1,6 +1,6 @@
 ﻿namespace Application.DTOs.Companies
 {
-    internal class GetCompanyRequest
+    public class GetCompanyRequest
     {
         public GetCompanyRequest(int id, string username, string password)
         {

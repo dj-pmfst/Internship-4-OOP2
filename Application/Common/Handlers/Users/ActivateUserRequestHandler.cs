@@ -1,10 +1,11 @@
 ﻿using Application.Common.Model;
 using Application.DTOs.Users;
+using Domain.Common.Validation;
 using Domain.Persistence.Users;
 
 namespace Application.Common.Handlers.Users
 {
-    internal class ActivateUserRequestHandler : RequestHandler<ActivateUserRequest, SuccessResponse>
+    public class ActivateUserRequestHandler : RequestHandler<ActivateUserRequest, SuccessResponse>
     {
         private readonly IUserUnitOfWork _unitOfWork;
         public ActivateUserRequestHandler(IUserUnitOfWork unitOfWork) => _unitOfWork = unitOfWork;
@@ -14,7 +15,7 @@ namespace Application.Common.Handlers.Users
             var user = await _unitOfWork.Repository.GetByIdAsync(request.Id);
             if (user == null)
             {
-                result.SetValidationResult(error); //??????????
+                result.SetValidationResult(ValidationErrors.NotFound("User"));
                 return result;
             }
 
@@ -23,7 +24,7 @@ namespace Application.Common.Handlers.Users
             await _unitOfWork.SaveAsync();
 
             result.SetResult(new SuccessResponse(true));
-            return result;
+            return result; 
         }
 
         protected override Task<bool> IsAuthorized() => Task.FromResult(true);

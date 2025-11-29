@@ -6,13 +6,12 @@
         {
             public static string CodePrefix = nameof(Company);
 
-            public static readonly ValidationItem NameMaxLength = new ValidationItem
-            {
-                Code = $"{CodePrefix}1",
-                Message = $"Ime kompanije ne smije biti duže od {Entities.Companies.Company.NameMaxLength} znakova.",
-                ValidationSeverity = ValidationSeverity.Error,
-                ValidationType = ValidationType.FormalValidation
-            };
+            public static readonly ValidationItem NameMaxLength = new ValidationItem(
+                $"{CodePrefix}1",
+                $"Ime kompanije ne smije biti duže od {Entities.Companies.Company.NameMaxLength} znakova.",
+                ValidationSeverity.Error,
+                ValidationType.FormalValidation
+            );
         }
     }
 }
