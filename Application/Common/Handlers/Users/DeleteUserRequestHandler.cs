@@ -2,24 +2,23 @@
 using Application.DTOs.Users;
 using Domain.Persistence.Users;
 
-namespace Application.Common.Users.Handlers
+namespace Application.Common.Handlers.Users
 {
-    internal class ActivateUserRequestHandler : RequestHandler<ActivateUserRequest, SuccessResponse>
+    public class DeleteUserRequestHandler : RequestHandler<DeleteUserRequest, SuccessResponse>
     {
         private readonly IUserUnitOfWork _unitOfWork;
-        public ActivateUserRequestHandler(IUserUnitOfWork unitOfWork) => _unitOfWork = unitOfWork;
+        public DeleteUserRequestHandler(IUserUnitOfWork unitOfWork) => _unitOfWork = unitOfWork;
 
-        protected override async Task<Result<SuccessResponse>> HandleRequest(ActivateUserRequest request, Result<SuccessResponse> result)
+        protected override async Task<Result<SuccessResponse>> HandleRequest(DeleteUserRequest request, Result<SuccessResponse> result)
         {
             var user = await _unitOfWork.Repository.GetByIdAsync(request.Id);
             if (user == null)
             {
-                result.SetValidationResult(error); //??????????
+                result.SetValidationResult(error); //popravit
                 return result;
             }
 
-            user.isActive = true;
-            await _unitOfWork.Repository.UpdateAsync(user);
+            await _unitOfWork.Repository.DeleteByIdAsync(request.Id);
             await _unitOfWork.SaveAsync();
 
             result.SetResult(new SuccessResponse(true));

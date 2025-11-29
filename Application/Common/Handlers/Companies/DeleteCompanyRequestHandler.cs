@@ -2,7 +2,7 @@
 using Application.DTOs.Companies;
 using Domain.Persistence.Companies;
 
-namespace Application.Common.Companies.Handlers
+namespace Application.Common.Handlers.Companies
 {
     public class DeleteCompanyRequestHandler : RequestHandler<DeleteCompanyRequest, SuccessResponse>
     {

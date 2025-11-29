@@ -2,7 +2,7 @@
 using Application.DTOs.Users;
 using Domain.Persistence.Users;
 
-namespace Application.Common.Users.Handlers
+namespace Application.Common.Handlers.Users
 {
     public class DeactivateUserRequestHandler : RequestHandler<DeactivateUserRequest, SuccessResponse>
     {

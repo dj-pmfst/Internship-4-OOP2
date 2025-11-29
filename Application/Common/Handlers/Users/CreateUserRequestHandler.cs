@@ -2,7 +2,7 @@
 using Domain.Common.Validation;
 using Domain.Persistence.Users;
 
-namespace Application.Common.Users.Handlers
+namespace Application.Common.Handlers.Users
 {
     public class CreateUserRequest
     {

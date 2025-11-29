@@ -1,7 +1,7 @@
 ﻿using Application.Common.Model;
 using Domain.Persistence.Users;
 
-namespace Application.Common.Users
+namespace Application.Common.Handlers.Users
 {
     public class UpdateUserRequest
     {

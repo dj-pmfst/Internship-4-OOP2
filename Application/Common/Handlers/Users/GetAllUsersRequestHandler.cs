@@ -3,7 +3,7 @@ using Application.DTOs.Users;
 using Domain.Persistence.Users;
 using Domain.Entities.Users;
 
-namespace Application.Common.Users.Handlers
+namespace Application.Common.Handlers.Users
 {
     public class GetAllUsersRequestHandler : RequestHandler<GetAllUsersRequest, GetResponse<User>>
     {

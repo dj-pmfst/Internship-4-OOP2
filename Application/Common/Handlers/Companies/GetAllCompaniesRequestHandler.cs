@@ -3,7 +3,7 @@ using Application.DTOs.Companies;
 using Domain.Entities.Companies;
 using Domain.Persistence.Companies;
 
-namespace Application.Common.Companies.Handlers
+namespace Application.Common.Handlers.Companies
 {
     public class GetAllCompaniesRequestHandler : RequestHandler<GetAllCompaniesRequest, GetResponse<Company>>
     {

@@ -1,4 +1,4 @@
-﻿using Application.Common.Users;
+﻿using Application.Common.Handlers.Users;
 using Application.Common.Users.Handlers;
 using Application.DTOs.Users;
 using Domain.Persistence.Users;

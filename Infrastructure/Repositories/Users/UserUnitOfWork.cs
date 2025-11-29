@@ -3,7 +3,7 @@ using Infrastructure.Database;
 
 namespace Infrastructure.Repositories.Users
 {
-    internal class UserUnitOfWork : IUserUnitOfWork
+    public class UserUnitOfWork : IUserUnitOfWork
     {
         private readonly ApplicationDBContext _dbContext;
         public IUserRepository Repository { get; }

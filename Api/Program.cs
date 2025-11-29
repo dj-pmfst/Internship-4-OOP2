@@ -1,22 +1,48 @@
-namespace Api
+using Application.Common.Handlers.Companies;
+using Application.Common.Handlers.Users;
+using Infrastructure.Repositories.Companies;
+using Infrastructure.Repositories.Users;
+using Domain.Persistence.Companies;
+using Domain.Persistence.Users;
+using Infrastructure.Database;
+using Microsoft.EntityFrameworkCore;
+
+var builder = WebApplication.CreateBuilder(args);
+
+
+builder.Services.AddDbContext<ApplicationDBContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+
+builder.Services.AddScoped<ICompanyUnitOfWork, CompanyUnitOfWork>();
+builder.Services.AddScoped<IUserUnitOfWork, UserUnitOfWork>();
+
+
+builder.Services.AddScoped<UpdateCompanyRequestHandler>();
+builder.Services.AddScoped<DeleteCompanyRequestHandler>();
+builder.Services.AddScoped<GetCompanyRequestHandler>();
+
+builder.Services.AddScoped<GetAllUsersRequestHandler>();
+builder.Services.AddScoped<UpdateUserRequestHandler>();
+builder.Services.AddScoped<DeleteUserRequestHandler>();
+
+
+
+builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
+var app = builder.Build();
+
+
+if (app.Environment.IsDevelopment())
 {
-    public class Program
-    {
-        public static void Main(string[] args)
-        {
-            var builder = WebApplication.CreateBuilder(args);
-
-
-            builder.Services.AddControllers();
-
-            var app = builder.Build();
-
-            app.UseHttpsRedirection();
-
-
-            app.MapControllers();
-
-            app.Run();
-        }
-    }
+    app.UseSwagger();
+    app.UseSwaggerUI();
 }
+
+app.UseHttpsRedirection();
+
+app.MapControllers();
+
+app.Run();

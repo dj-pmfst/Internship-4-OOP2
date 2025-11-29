@@ -3,7 +3,7 @@ using Domain.Common.Validation;
 using Domain.Persistence.Companies;
 using static Application.DTOs.Companies.AddCompanyRequest;
 
-namespace Application.Common.Companies.Handlers
+namespace Application.Common.Handlers.Companies
 {
     public class UpdateCompanyRequestHandler : RequestHandler<UpdateCompanyRequest, SuccessResponse>
     {

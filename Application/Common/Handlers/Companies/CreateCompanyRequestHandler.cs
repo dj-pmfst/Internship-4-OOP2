@@ -1,7 +1,7 @@
 ﻿using Application.Common.Model;
 using Domain.Persistence.Companies;
 
-namespace Application.Common.Companies.Handlers
+namespace Application.Common.Handlers.Companies
 {
     public class CreateCompanyRequest
     {
