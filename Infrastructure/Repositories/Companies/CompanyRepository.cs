@@ -7,16 +7,17 @@ namespace Infrastructure.Repositories.Companies
 {
     internal class CompanyRepository : Repository<Company, int>, ICompanyRepository
     {
-        private readonly ApplicationDBContext _applicationDBContext;
+        private readonly CompanyDbContext _context;
         private readonly IDapperManager _dapperManager;
-        public CompanyRepository(DbContext context, IDapperManager dapperManager)
+        public CompanyRepository(CompanyDbContext context, IDapperManager dapperManager)
             : base(context)
         {
+            _context = context;
             _dapperManager = dapperManager;
         }
         public async Task<Company> GetById(int id)
         {
-            return await _applicationDBContext.Set<Company>().FindAsync(id) ?? null!;
+            return await _context.Set<Company>().FindAsync(id) ?? null!;
         }
 
         public async Task<bool> IsNameUniqueAsync(string name, int? id = null)

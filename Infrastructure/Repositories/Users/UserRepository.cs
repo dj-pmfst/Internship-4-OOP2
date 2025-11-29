@@ -8,11 +8,12 @@ namespace Infrastructure.Repositories.Users
 {
     public sealed class UserRepository : Repository<User, int>, IUserRepository
     {
-        private readonly ApplicationDBContext _applicationDBContext;
+        private readonly UserDbContext _context;
         private readonly IDapperManager _dapperManager;
-        public UserRepository(DbContext context, IDapperManager dapperManager) 
+        public UserRepository(UserDbContext context, IDapperManager dapperManager) 
             : base(context)
         {
+            _context = context;
             _dapperManager = dapperManager;
         }
         public async Task<User> GetById(int id)
