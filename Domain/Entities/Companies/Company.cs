@@ -22,14 +22,19 @@ namespace Domain.Entities.Companies
 
             return new Result<bool>(true, validationResult);
         }
-        public async Task<ValidationResult> CreateOrUpdateValidation(ICompanyRepository repository)
+        public async Task<ValidationResult> CreateOrUpdateValidation(ICompanyRepository companyRepository)
         {
             var validationResult = new ValidationResult();
 
             if (Name?.Length > NameMaxLength)
             {
                 validationResult.AddValidationItem(ValidationItems.Company.NameMaxLength);
-            } // unikatno ime
+            }
+
+            if (!await companyRepository.IsNameUniqueAsync(Name, Id))
+            {
+                validationResult = ValidationErrors.AlreadyExists("Name");
+            }
 
             return validationResult;
         }

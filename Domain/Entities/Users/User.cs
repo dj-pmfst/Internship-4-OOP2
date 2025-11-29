@@ -8,7 +8,9 @@ namespace Domain.Entities.Users
 {
     public class User
     {
-        public const int FirstNameMaxLength = 100, WebsiteMaxLength = 100, SurnameMaxLength = 100, StreetMaxLength = 150, CityMaxLength = 150;
+        public const int FirstNameMaxLength = 100, 
+            WebsiteMaxLength = 100, SurnameMaxLength = 100, 
+            StreetMaxLength = 150, CityMaxLength = 150;
         public int Id { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
@@ -26,7 +28,7 @@ namespace Domain.Entities.Users
         public bool isActive { get; set; } = true;
         public async Task <Result<bool>> Create(IUserRepository userRepository)
         {
-            var validationResult = await CreateOrUpdateValidation();
+            var validationResult = await CreateOrUpdateValidation(userRepository);
             if (validationResult.HasError)
             {
                 return new Result<bool> (false, validationResult);
@@ -36,7 +38,7 @@ namespace Domain.Entities.Users
 
             return new Result<bool> (true, validationResult);
         }
-        public async Task <ValidationResult> CreateOrUpdateValidation()
+        public async Task <ValidationResult> CreateOrUpdateValidation(IUserRepository userRepository)
         {
             var validationResult = new ValidationResult();
 
@@ -47,6 +49,10 @@ namespace Domain.Entities.Users
             if (Surname?.Length > SurnameMaxLength)
             {
                 validationResult.AddValidationItem(ValidationItems.User.SurnameMaxLength);
+            }
+            if (!await userRepository.IsUsernameUniqueAsync(Username, Id))
+            {
+                validationResult = ValidationErrors.AlreadyExists("Username");
             }
             if (adressStreet?.Length > StreetMaxLength)
             {
@@ -59,7 +65,22 @@ namespace Domain.Entities.Users
             if (website?.Length > WebsiteMaxLength)
             {
                 validationResult.AddValidationItem(ValidationItems.User.WebsiteMaxLength);
-            } //valid url pattern 
+            }
+            if (!ValidationHelpers.IsValidUrl(website))
+            {
+                validationResult.AddValidationItem(ValidationItems.User.URLInvalid);
+            }
+            if (!ValidationHelpers.IsValidEmail(Email))
+            {
+                validationResult.AddValidationItem(ValidationItems.User.EmailInvalid);
+            }
+
+            if (!await userRepository.IsEmailUniqueAsync(Email, Id))
+            {
+                var emailError = ValidationErrors.AlreadyExists("Email");
+                foreach (var item in emailError.ValidationItems)
+                    validationResult.AddValidationItem(item);
+            }
 
             return validationResult;
         } 

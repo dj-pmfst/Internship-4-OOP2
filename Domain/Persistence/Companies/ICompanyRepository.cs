@@ -6,5 +6,6 @@ namespace Domain.Persistence.Companies
     public interface ICompanyRepository : IRepository<Company, int>
     {
         Task<Company> GetById(int id);
+        Task<bool> IsNameUniqueAsync(string name, int? ignoreUserId = null);
     }
 }
