@@ -1,6 +1,6 @@
 ﻿namespace Application.DTOs.Users
 {
-    public class CreateUserRequest
+    public class CreateUserDomainRequest
     {
         public string Name { get; set; } = null!;
         public string Surname { get; set; } = null!;

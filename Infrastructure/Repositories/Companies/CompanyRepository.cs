@@ -19,5 +19,16 @@ namespace Infrastructure.Repositories.Companies
             return await _applicationDBContext.Set<Company>().FindAsync(id) ?? null!;
         }
 
+        public async Task<bool> IsNameUniqueAsync(string name, int? id = null)
+        {
+            var sql = @"SELECT COUNT(*) 
+                FROM Companies 
+                WHERE Name = @Name AND (@Id IS NULL OR Id <> @Id)";
+
+            var count = await _dapper.QuerySingleAsync<int>(sql, new { Name = name, Id = id });
+
+            return count == 0;
+        }
+
     }
 }

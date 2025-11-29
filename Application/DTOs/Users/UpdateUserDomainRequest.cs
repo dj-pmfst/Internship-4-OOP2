@@ -1,7 +1,8 @@
 ﻿namespace Application.DTOs.Users
 {
-    public class UpdateUserRequest
+    public class UpdateUserDomainRequest
     {
+        public int Id { get; set; }
         public string Name { get; set; } = null!;
         public string Surname { get; set; } = null!;
         public string Username { get; set; } = null!;

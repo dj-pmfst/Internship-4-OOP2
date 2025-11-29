@@ -33,5 +33,27 @@ namespace Infrastructure.Repositories.Users
 
             return await _dapperManager.QuerySingleAsync<User>(sql, paramaters);
         }
+
+        public async Task<bool> IsUsernameUniqueAsync(string name, int? id = null)
+        {
+            var sql = @"SELECT COUNT(*) 
+                FROM Users 
+                WHERE Username = @Username AND (@Id IS NULL OR Id <> @Id)";
+
+            var count = await _dapperManager.QuerySingleAsync<int>(sql, new { Name = name, Id = id });
+
+            return count == 0;
+        }
+        public async Task<bool> IsEmailUniqueAsync(string name, int? id = null)
+        {
+            var sql = @"SELECT COUNT(*) 
+                FROM Users 
+                WHERE Email = @Email AND (@Id IS NULL OR Id <> @Id)";
+
+            var count = await _dapperManager.QuerySingleAsync<int>(sql, new { Name = name, Id = id });
+
+            return count == 0;
+        }
+
     }
 }

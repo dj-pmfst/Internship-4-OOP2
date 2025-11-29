@@ -4,36 +4,64 @@ using Domain.Persistence.Users;
 
 namespace Application.Common.Handlers.Users
 {
-    public class ImportExternalUsersRequestHandler : RequestHandler<ImportExternalUsersRequest, SuccessResponse>
+    public class ImportExternalUsersRequestHandler
+        : RequestHandler<ImportExternalUsersRequest, SuccessResponse>
     {
-        private readonly IUserUnitOfWork _unitOfWork;
-        public ImportExternalUsersRequestHandler(IUserUnitOfWork unitOfWork) => _unitOfWork = unitOfWork;
+        private readonly IUserRepository _users;
+        private readonly IExternalUserApiClient _externalApi;
+        private readonly ICacheService _cache;
 
-        protected override async Task<Result<SuccessResponse>> HandleRequest(ImportExternalUsersRequest request, Result<SuccessResponse> result)
+        public ImportExternalUsersRequestHandler(
+            IUserRepository users,
+            IExternalUserApiClient externalApi,
+            ICacheService cache)
         {
-            var externalUsers = await _unitOfWork.Repository.ImportFromExternalAsync(); 
+            _users = users;
+            _externalApi = externalApi;
+            _cache = cache;
+        }
+
+        protected override async Task<Result<SuccessResponse>> HandleRequest(
+            ImportExternalUsersRequest request,
+            Result<SuccessResponse> result)
+        {
+
+            var cachedUsers = await _cache.GetAsync<List<ExternalUserDto>>("external_users");
+
+            var externalUsers = cachedUsers ??
+                                await _externalApi.GetExternalUsersAsync();
+
+            if (cachedUsers == null)
+            {
+                await _cache.SetAsync(
+                    "external_users",
+                    externalUsers,
+                    TimeSpan.FromMinutes(10)
+                );
+            }
 
             foreach (var ext in externalUsers)
             {
-                var existing = await _unitOfWork.Repository.FindByExternalIdAsync(ext.ExternalId); 
-                if (existing == null) await _unitOfWork.Repository.InsertAsync(ext);
-                else
+                if (!await _users.IsEmailUniqueAsync(ext.Email))
+                    continue;
+
+                var user = new Domain.Entities.Users.User
                 {
-                    existing.Name = ext.Name;
-                    existing.Surname = ext.Surname;
-                    existing.adressCity = ext.adressCity;
-                    existing.adressStreet = ext.adressStreet;
-                    existing.geoLat = ext.geoLat;
-                    existing.geoLng = ext.geoLng;
-                    await _unitOfWork.Repository.UpdateAsync(existing);
-                }
+                    Name = ext.Name,
+                    Surname = ext.Surname,
+                    Email = ext.Email,
+                    Username = ext.Username,
+                    website = ext.Website,
+                };
+
+                await _users.InsertAsync(user);
             }
 
-            await _unitOfWork.SaveAsync();
             result.SetResult(new SuccessResponse(true));
             return result;
         }
 
-        protected override Task<bool> IsAuthorized() => Task.FromResult(true);
+        protected override Task<bool> IsAuthorized()
+            => Task.FromResult(true);
     }
 }

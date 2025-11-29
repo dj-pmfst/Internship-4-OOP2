@@ -1,5 +1,5 @@
-﻿using Application.Common.Handlers.Users;
-using Application.Common.Users.Handlers;
+﻿using Api.Common;
+using Application.Common.Handlers.Users;
 using Application.DTOs.Users;
 using Domain.Persistence.Users;
 using Microsoft.AspNetCore.Mvc;
@@ -13,21 +13,22 @@ namespace API.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll([FromServices] IUserUnitOfWork unitOfWork)
         {
-            var requestHandler = new GetAllUsersRequestHandler(unitOfWork);
-            var result = await requestHandler.ProcessAuthorizedRequestAsync(new GetAllRequest());
+            var handler = new GetAllUsersRequestHandler(unitOfWork);
+            var result = await handler.ProcessAuthorizedRequestAsync(new GetAllUsersRequest());
             return result.ToActionResult(this);
         }
 
         [HttpGet("{id:int}")]
         public async Task<IActionResult> Get([FromServices] IUserUnitOfWork unitOfWork, [FromRoute] int id)
         {
-            var requestHandler = new GetAllUsersRequestHandler(unitOfWork);
-            var result = await requestHandler.ProcessAuthorizedRequestAsync(new GetAllRequest(id));
+            var handler = new GetAllUsersRequestHandler(unitOfWork);
+            var result = await handler.ProcessAuthorizedRequestAsync(new GetAllUsersRequest(id));
             return result.ToActionResult(this);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create([FromServices] IUserUnitOfWork unitOfWork, [FromBody] CreateUserRequest request)
+        public async Task<IActionResult> Create([FromServices] IUserUnitOfWork unitOfWork, 
+            [FromBody] CreateUserRequest request)
         {
             var requestHandler = new CreateUserRequestHandler(unitOfWork);
             var result = await requestHandler.ProcessAuthorizedRequestAsync(request);
@@ -82,11 +83,10 @@ namespace API.Controllers
         }
 
         [HttpPost("import-external")]
-        public async Task<IActionResult> ImportExternal([FromServices] IUserUnitOfWork unitOfWork)
+        public async Task<IActionResult> ImportExternal(
+            [FromServices] ImportExternalUsersRequestHandler handler)
         {
-            var handler = new ImportExternalUsersRequestHandler(unitOfWork);
             var result = await handler.ProcessAuthorizedRequestAsync(new ImportExternalUsersRequest());
-
             return result.ToActionResult(this);
         }
     }

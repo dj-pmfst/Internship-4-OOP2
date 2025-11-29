@@ -26,7 +26,9 @@ builder.Services.AddScoped<GetAllUsersRequestHandler>();
 builder.Services.AddScoped<UpdateUserRequestHandler>();
 builder.Services.AddScoped<DeleteUserRequestHandler>();
 
-
+builder.Services.AddScoped<IExternalUserApiClient, ExternalUserApiClient>();
+builder.Services.AddScoped<ICacheService, MemoryCacheService>();
+builder.Services.AddMemoryCache(); 
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
