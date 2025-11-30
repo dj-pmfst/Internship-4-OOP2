@@ -8,7 +8,7 @@ namespace Infrastructure.Database.Configuration.Companies
     {
         public void Configure(EntityTypeBuilder<Company> builder)
         {
-            builder.ToTable("Companies");
+            builder.ToTable("companies", "public");
 
             builder.HasKey(c => c.Id);
 
@@ -17,7 +17,8 @@ namespace Infrastructure.Database.Configuration.Companies
 
             builder.Property(c => c.Name)
                 .IsRequired()
-                .HasMaxLength(Company.NameMaxLength);
+                .HasMaxLength(Company.NameMaxLength)
+                .HasColumnName("name");
         }
     }
 }

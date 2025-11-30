@@ -3,6 +3,22 @@
   "WorkspaceRootPath": "C:\\Users\\DORA\\source\\repos\\Users app\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{E528BBC3-1C26-8C35-F682-23718816ADCD}|Domain\\Domain.csproj|c:\\users\\dora\\source\\repos\\users app\\domain\\entities\\users\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E528BBC3-1C26-8C35-F682-23718816ADCD}|Domain\\Domain.csproj|solutionrelative:domain\\entities\\users\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9366FC08-3460-404C-B285-B790B104D657}|Infrastructure\\Infrastructure.csproj|c:\\users\\dora\\source\\repos\\users app\\infrastructure\\database\\configuration\\users\\userconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9366FC08-3460-404C-B285-B790B104D657}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\database\\configuration\\users\\userconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9366FC08-3460-404C-B285-B790B104D657}|Infrastructure\\Infrastructure.csproj|c:\\users\\dora\\source\\repos\\users app\\infrastructure\\database\\configuration\\companies\\companyconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9366FC08-3460-404C-B285-B790B104D657}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\database\\configuration\\companies\\companyconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9366FC08-3460-404C-B285-B790B104D657}|Infrastructure\\Infrastructure.csproj|c:\\users\\dora\\source\\repos\\users app\\infrastructure\\repositories\\users\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9366FC08-3460-404C-B285-B790B104D657}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\repositories\\users\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A4CCA782-32B3-4868-B233-D705133958F4}|Api\\Api.csproj|c:\\users\\dora\\source\\repos\\users app\\api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A4CCA782-32B3-4868-B233-D705133958F4}|Api\\Api.csproj|solutionrelative:api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -42,11 +58,63 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 0,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Users\\DORA\\source\\repos\\Users app\\Domain\\Entities\\Users\\User.cs",
+              "RelativeDocumentMoniker": "Domain\\Entities\\Users\\User.cs",
+              "ToolTip": "C:\\Users\\DORA\\source\\repos\\Users app\\Domain\\Entities\\Users\\User.cs",
+              "RelativeToolTip": "Domain\\Entities\\Users\\User.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAAwHYAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-30T00:21:13.137Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "UserRepository.cs",
+              "DocumentMoniker": "C:\\Users\\DORA\\source\\repos\\Users app\\Infrastructure\\Repositories\\Users\\UserRepository.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Repositories\\Users\\UserRepository.cs",
+              "ToolTip": "C:\\Users\\DORA\\source\\repos\\Users app\\Infrastructure\\Repositories\\Users\\UserRepository.cs",
+              "RelativeToolTip": "Infrastructure\\Repositories\\Users\\UserRepository.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAUwCEAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-29T23:44:47.165Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "CompanyConfiguration.cs",
+              "DocumentMoniker": "C:\\Users\\DORA\\source\\repos\\Users app\\Infrastructure\\Database\\Configuration\\Companies\\CompanyConfiguration.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Database\\Configuration\\Companies\\CompanyConfiguration.cs",
+              "ToolTip": "C:\\Users\\DORA\\source\\repos\\Users app\\Infrastructure\\Database\\Configuration\\Companies\\CompanyConfiguration.cs",
+              "RelativeToolTip": "Infrastructure\\Database\\Configuration\\Companies\\CompanyConfiguration.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-29T23:43:49.077Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "UserConfiguration.cs",
+              "DocumentMoniker": "C:\\Users\\DORA\\source\\repos\\Users app\\Infrastructure\\Database\\Configuration\\Users\\UserConfiguration.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Database\\Configuration\\Users\\UserConfiguration.cs",
+              "ToolTip": "C:\\Users\\DORA\\source\\repos\\Users app\\Infrastructure\\Database\\Configuration\\Users\\UserConfiguration.cs",
+              "RelativeToolTip": "Infrastructure\\Database\\Configuration\\Users\\UserConfiguration.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-29T23:43:42.646Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
               "Title": "UserUnitOfWork.cs",
               "DocumentMoniker": "C:\\Users\\DORA\\source\\repos\\Users app\\Infrastructure\\Repositories\\Users\\UserUnitOfWork.cs",
               "RelativeDocumentMoniker": "Infrastructure\\Repositories\\Users\\UserUnitOfWork.cs",
@@ -54,12 +122,11 @@
               "RelativeToolTip": "Infrastructure\\Repositories\\Users\\UserUnitOfWork.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-29T23:15:22.574Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-29T23:15:22.574Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 9,
               "Title": "DapperManager.cs",
               "DocumentMoniker": "C:\\Users\\DORA\\source\\repos\\Users app\\Infrastructure\\DapperManager.cs",
               "RelativeDocumentMoniker": "Infrastructure\\DapperManager.cs",
@@ -67,12 +134,11 @@
               "RelativeToolTip": "Infrastructure\\DapperManager.cs",
               "ViewState": "AgIAAAgAAAAAAAAAAADwvwwAAAAxAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-29T23:11:12.713Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-29T23:11:12.713Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 11,
               "Title": "appsettings.Development.json",
               "DocumentMoniker": "C:\\Users\\DORA\\source\\repos\\Users app\\Api\\appsettings.Development.json",
               "RelativeDocumentMoniker": "Api\\appsettings.Development.json",
@@ -80,12 +146,11 @@
               "RelativeToolTip": "Api\\appsettings.Development.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-11-29T22:38:16.372Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-29T22:38:16.372Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 10,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\DORA\\source\\repos\\Users app\\Api\\appsettings.json",
               "RelativeDocumentMoniker": "Api\\appsettings.json",
@@ -93,12 +158,11 @@
               "RelativeToolTip": "Api\\appsettings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-11-29T21:45:21.98Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-29T21:45:21.98Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 4,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\DORA\\source\\repos\\Users app\\Api\\Program.cs",
               "RelativeDocumentMoniker": "Api\\Program.cs",
@@ -111,7 +175,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 5,
               "Title": "DependencyInjection.cs",
               "DocumentMoniker": "C:\\Users\\DORA\\source\\repos\\Users app\\Infrastructure\\DependencyInjection.cs",
               "RelativeDocumentMoniker": "Infrastructure\\DependencyInjection.cs",
@@ -119,12 +183,11 @@
               "RelativeToolTip": "Infrastructure\\DependencyInjection.cs",
               "ViewState": "AgIAAB4AAAAAAAAAAAAmwDoAAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-29T21:26:46.647Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-29T21:26:46.647Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 6,
               "Title": "UnitOfWork.cs",
               "DocumentMoniker": "C:\\Users\\DORA\\source\\repos\\Users app\\Infrastructure\\UnitOfWork.cs",
               "RelativeDocumentMoniker": "Infrastructure\\UnitOfWork.cs",
@@ -132,12 +195,11 @@
               "RelativeToolTip": "Infrastructure\\UnitOfWork.cs",
               "ViewState": "AgIAABAAAAAAAAAAAAAkwCwAAAADAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-29T23:15:34.469Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-29T23:15:34.469Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 7,
               "Title": "IUnitOfWork.cs",
               "DocumentMoniker": "C:\\Users\\DORA\\source\\repos\\Users app\\Domain\\Persistence\\Common\\IUnitOfWork.cs",
               "RelativeDocumentMoniker": "Domain\\Persistence\\Common\\IUnitOfWork.cs",
@@ -145,8 +207,7 @@
               "RelativeToolTip": "Domain\\Persistence\\Common\\IUnitOfWork.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-29T23:19:02.886Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-29T23:19:02.886Z"
             }
           ]
         }

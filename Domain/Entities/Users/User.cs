@@ -112,11 +112,14 @@ namespace Domain.Entities.Users
                 validationResult.AddValidationItem(ValidationItems.User.EmailInvalid);
             }
 
-            if (!await userRepository.IsWithin3KmAsync(geoLat, geoLng))
+            var existingUsers = await userRepository.GetAll();
+            if (existingUsers.Values.Any(u => u.Id != Id)) 
             {
-                validationResult.AddValidationItem(ValidationItems.User.UserTooFar);
+                if (!await userRepository.IsWithin3KmAsync(geoLat, geoLng, Id))
+                {
+                    validationResult.AddValidationItem(ValidationItems.User.UserTooFar);
+                }
             }
-
 
             if (!await userRepository.IsEmailUniqueAsync(Email, Id))
             {

@@ -8,7 +8,7 @@ namespace Infrastructure.Database.Configuration.Users
     {
         public void Configure(EntityTypeBuilder<User> builder)
         {
-            builder.ToTable("Users");
+            builder.ToTable("users", "public");
 
             builder.HasKey(u => u.Id);
 
@@ -30,6 +30,9 @@ namespace Infrastructure.Database.Configuration.Users
                 .HasMaxLength(100)
                 .HasColumnName("username");
 
+            builder.Property(u => u.DoB)
+                .HasColumnName("dob");
+
             builder.Property(u => u.Email)
                 .IsRequired()
                 .HasMaxLength(255)
@@ -50,10 +53,27 @@ namespace Infrastructure.Database.Configuration.Users
                 .HasMaxLength(User.CityMaxLength)
                 .HasColumnName("address_city");
 
+            builder.Property(u => u.geoLat)
+                .HasColumnName("geo_lat")
+                .HasColumnType("decimal(18,6)");
+
+            builder.Property(u => u.geoLng)
+                .HasColumnName("geo_lng")
+                .HasColumnType("decimal(18,6)");
+
             builder.Property(u => u.website)
                 .HasMaxLength(User.WebsiteMaxLength)
                 .HasColumnName("website");
 
+            builder.Property(u => u.createdAt)
+                .HasColumnName("created_at");
+
+            builder.Property(u => u.updatedAt)
+                .HasColumnName("updated_at");
+
+            builder.Property(u => u.isActive)
+                .HasColumnName("is_active")
+                .HasDefaultValue(true);
         }
     }
 }
