@@ -4,6 +4,7 @@ using Domain.Common.Validation;
 using Domain.Common.Validation.ValidationItems;
 using Domain.Common.Validators;
 using Domain.Persistence.Users;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Domain.Entities.Users
 {
@@ -27,6 +28,9 @@ namespace Domain.Entities.Users
         public DateTime createdAt { get; set; }
         public DateTime updatedAt { get; set; }
         public bool isActive { get; set; } = true;
+
+        [NotMapped]
+        public bool IsExternalUser { get; set; } = false;
         public async Task <Result<bool>> Create(IUserRepository userRepository)
         {
             var validationResult = await CreateOrUpdateValidation(userRepository);
@@ -129,7 +133,7 @@ namespace Domain.Entities.Users
             var existingUsers = await userRepository.GetAll();
             if (existingUsers.Values.Any(u => u.Id != Id))
             {
-                if (!await userRepository.IsWithin3KmAsync(GeoLat, GeoLng, Id))
+                if (!IsExternalUser && !await userRepository.IsWithin3KmAsync(GeoLat, GeoLng, Id))
                 {
                     validationResult.AddValidationItem(ValidationItems.User.UserTooFar);
                 }

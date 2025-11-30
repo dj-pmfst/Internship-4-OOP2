@@ -1,5 +1,10 @@
-﻿public interface ICacheService
+﻿namespace Application.Common.Interfaces
 {
-    Task SetAsync<T>(string key, T value, TimeSpan duration);
-    Task<T?> GetAsync<T>(string key);
+    public interface ICacheService
+    {
+        T? Get<T>(string key);
+        void Set<T>(string key, T value, TimeSpan? expiration = null);
+        void Remove(string key);
+        bool Exists(string key);
+    }
 }

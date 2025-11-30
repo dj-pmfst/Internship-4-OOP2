@@ -84,7 +84,7 @@ namespace API.Controllers
 
         [HttpPost("import-external")]
         public async Task<IActionResult> ImportExternal(
-            [FromServices] ImportExternalUsersRequestHandler handler)
+            [FromServices] Application.Common.Handlers.Users.ImportExternalUsersRequestHandler handler)
         {
             var result = await handler.ProcessAuthorizedRequestAsync(new ImportExternalUsersRequest());
             return result.ToActionResult(this);

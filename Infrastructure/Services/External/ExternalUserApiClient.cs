@@ -1,18 +1,46 @@
-﻿using System.Net.Http.Json;
+﻿using Application.DTOs.Users;
+using Microsoft.Extensions.Configuration;
+using System.Net.Http.Json;
 
-public class ExternalUserApiClient : IExternalUserApiClient
+namespace Infrastructure.Services.External
 {
-    private readonly HttpClient _http;
-
-    public ExternalUserApiClient(HttpClient http)
+    public class ExternalUserApiClient : IExternalUserApiClient
     {
-        _http = http;
-    }
+        private readonly HttpClient _httpClient;
+        private readonly string _baseUrl;
+        private readonly string _usersEndpoint;
 
-    public async Task<List<ExternalUserDto>> GetExternalUsersAsync()
-    {
-        var response = await _http.GetFromJsonAsync<List<ExternalUserDto>>("https://external-api.com/users");
+        public ExternalUserApiClient(HttpClient httpClient, IConfiguration configuration)
+        {
+            _httpClient = httpClient;
+            _baseUrl = configuration["ExternalApi:BaseUrl"]
+                ?? throw new InvalidOperationException("ExternalApi:BaseUrl configuration missing");
+            _usersEndpoint = configuration["ExternalApi:UsersEndpoint"] ?? "/users";
+        }
 
-        return response ?? new List<ExternalUserDto>();
+        public async Task<List<ExternalUserDTO>?> GetExternalUsersAsync()
+        {
+            try
+            {
+                var url = $"{_baseUrl}{_usersEndpoint}";
+                var response = await _httpClient.GetAsync(url);
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    return null;
+                }
+
+                var users = await response.Content.ReadFromJsonAsync<List<ExternalUserDTO>>();
+                return users;
+            }
+            catch (HttpRequestException)
+            {
+                return null;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
     }
 }

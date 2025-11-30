@@ -1,35 +1,48 @@
-﻿using Microsoft.Extensions.Caching.Memory;
+﻿using Application.Common.Interfaces;
+using Microsoft.Extensions.Caching.Memory;
 
-public class MemoryCacheService : ICacheService
+namespace Infrastructure.Services.Cache
 {
-    private readonly IMemoryCache _cache;
-
-    public MemoryCacheService(IMemoryCache cache)
+    public class MemoryCacheService : ICacheService
     {
-        _cache = cache;
-    }
+        private readonly IMemoryCache _cache;
 
-    public Task SetAsync<T>(string key, T value, TimeSpan duration)
-    {
-        _cache.Set(key, value, duration);
-        return Task.CompletedTask;
-    }
-
-    public Task<T?> GetAsync<T>(string key)
-    {
-        _cache.TryGetValue(key, out T? value);
-        return Task.FromResult(value);
-    }
-
-    public async Task SetAsync<T>(string key, T value, TimeSpan? absoluteExpirationRelativeToNow = null)
-    {
-        var options = new MemoryCacheEntryOptions
+        public MemoryCacheService(IMemoryCache cache)
         {
-            AbsoluteExpiration = DateTime.Today.AddDays(1)
-        };
+            _cache = cache;
+        }
 
-        _cache.Set(key, value, options);
-        await Task.CompletedTask;
+        public T? Get<T>(string key)
+        {
+            return _cache.TryGetValue(key, out T? value) ? value : default;
+        }
+
+        public void Set<T>(string key, T value, TimeSpan? expiration = null)
+        {
+            var cacheOptions = new MemoryCacheEntryOptions();
+
+            if (expiration.HasValue)
+            {
+                cacheOptions.AbsoluteExpirationRelativeToNow = expiration;
+            }
+            else
+            {
+                var now = DateTime.UtcNow;
+                var endOfDay = now.Date.AddDays(1).AddTicks(-1);
+                cacheOptions.AbsoluteExpiration = endOfDay;
+            }
+
+            _cache.Set(key, value, cacheOptions);
+        }
+
+        public void Remove(string key)
+        {
+            _cache.Remove(key);
+        }
+
+        public bool Exists(string key)
+        {
+            return _cache.TryGetValue(key, out _);
+        }
     }
-
 }

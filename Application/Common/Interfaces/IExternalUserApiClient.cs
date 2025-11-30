@@ -1,4 +1,6 @@
-﻿public interface IExternalUserApiClient
+﻿using Application.DTOs.Users;
+
+public interface IExternalUserApiClient
 {
-    Task<List<ExternalUserDto>> GetExternalUsersAsync();
+    Task<List<ExternalUserDTO>> GetExternalUsersAsync();
 }

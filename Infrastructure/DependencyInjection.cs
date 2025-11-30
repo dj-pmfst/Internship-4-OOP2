@@ -1,9 +1,12 @@
 ﻿using Application.Common.Handlers.Users;
+using Application.Common.Interfaces;
 using Domain.Persistence.Companies;
 using Domain.Persistence.Users;
 using Infrastructure.Database;
 using Infrastructure.Repositories.Companies;
 using Infrastructure.Repositories.Users;
+using Infrastructure.Services.Cache;
+using Infrastructure.Services.External;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
