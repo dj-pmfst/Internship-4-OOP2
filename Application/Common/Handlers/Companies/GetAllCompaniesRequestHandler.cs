@@ -26,10 +26,16 @@ namespace Application.Common.Handlers.Companies
         {
 
             var user = await _userRepository.GetByUsernameAndPasswordAsync(request.Username, request.Password);
-            if (user == null || !user.isActive)
+
+            if (user == null)
             {
-                result.SetValidationResult(
-                    ValidationErrors.FieldIsRequired("username/password"));
+                result.SetValidationResult(ValidationErrors.InvalidCredentials());
+                return result;
+            }
+
+            if (!user.isActive)
+            {
+                result.SetValidationResult(ValidationErrors.UserInactive());
                 return result;
             }
 

@@ -1,4 +1,5 @@
-﻿using Domain.Persistence.Companies;
+﻿using Application.Common.Handlers.Users;
+using Domain.Persistence.Companies;
 using Domain.Persistence.Users;
 using Infrastructure.Database;
 using Infrastructure.Repositories.Companies;
@@ -56,10 +57,14 @@ namespace Infrastructure
                 return new CompanyUnitOfWork(dbContext, repo);
             });
 
+            services.AddScoped<DeactivateUserRequestHandler>();
+
             services.AddMemoryCache();
 
             services.AddSingleton<ICacheService, MemoryCacheService>();
             services.AddHttpClient<IExternalUserApiClient, ExternalUserApiClient>();
+
+            services.AddScoped<ImportExternalUsersRequestHandler>();
 
             return services;
         }

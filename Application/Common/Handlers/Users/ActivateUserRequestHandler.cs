@@ -19,14 +19,26 @@ namespace Application.Common.Handlers.Users
                 return result;
             }
 
+            if (user.isActive)
+            {
+                result.SetValidationResult(ValidationErrors.AlreadyExists("Aktivacija korisnik"));
+                return result;
+            }
+
             user.isActive = true;
-            await _unitOfWork.Repository.UpdateAsync(user);
+
+            user.updatedAt = DateTime.UtcNow;
+
+            _unitOfWork.Repository.Update(user);
             await _unitOfWork.SaveAsync();
 
             result.SetResult(new SuccessResponse(true));
             return result; 
         }
 
-        protected override Task<bool> IsAuthorized() => Task.FromResult(true);
+        protected override Task<bool> IsAuthorized()
+        {
+            return Task.FromResult(true); 
+        }
     }
 }

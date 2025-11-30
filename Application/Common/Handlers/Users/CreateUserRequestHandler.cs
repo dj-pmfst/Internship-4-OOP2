@@ -44,6 +44,8 @@ namespace Application.Common.Handlers.Users
                 geoLat = request.geoLat,
                 geoLng = request.geoLng,
                 website = request.website,
+                createdAt = DateTime.UtcNow,
+                updatedAt = DateTime.UtcNow
             };
 
             var domainResult = await user.Create(_unitOfWork.Repository);

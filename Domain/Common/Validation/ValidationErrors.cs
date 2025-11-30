@@ -40,5 +40,27 @@
 
             return result;
         }
+
+        public static ValidationResult InvalidCredentials()
+        {
+            var result = new ValidationResult();
+            result.AddValidationItem(new ValidationItem( 
+                code: "INVALID_CREDENTIALS",
+                message: "Neispravan username ili lozinka. ",
+                severity: ValidationSeverity.Error
+            ));
+            return result;
+        }
+
+        public static ValidationResult UserInactive()
+        {
+            var result = new ValidationResult();
+            result.AddValidationItem(new ValidationItem( 
+                code: "USER_INACTIVE",
+                message: "User account is deactivated.",
+                severity: ValidationSeverity.Error
+            ));
+            return result;
+        }
     }
 }

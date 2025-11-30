@@ -1,4 +1,5 @@
 ﻿using Application.Common.Model;
+using Domain.Common.Validation;
 using Domain.Persistence.Users;
 
 namespace Application.Common.Handlers.Users
@@ -30,26 +31,34 @@ namespace Application.Common.Handlers.Users
 
         protected async override Task<Result<SuccessPostResponse>> HandleRequest(UpdateUserRequest request, Result<SuccessPostResponse> result)
         {
-            var user = new Domain.Entities.Users.User
+            var user = await _unitOfWork.Repository.GetByIdAsync(request.Id);
+
+            if (user == null)
             {
-                Name = request.Name,
-                Surname = request.Surname,
-                Username = request.Username,
-                DoB = request.DoB,
-                Email = request.Email,
-                Password = request.Password,
-                adressStreet = request.adressStreet,
-                adressCity = request.adressCity,
-                geoLat = request.geoLat,
-                geoLng = request.geoLng,
-                website = request.website,
-            };
+                result.SetValidationResult(ValidationErrors.NotFound($"User with ID {request.Id}"));
+                return result;
+            }
+
+            user.Name = request.Name;
+            user.Surname = request.Surname;
+            user.Username = request.Username;
+            user.DoB = request.DoB;
+            user.Email = request.Email;
+            user.Password = request.Password;
+            user.adressStreet = request.adressStreet;
+            user.adressCity = request.adressCity;
+            user.geoLat = request.geoLat;
+            user.geoLng = request.geoLng;
+            user.website = request.website;
+            user.updatedAt = DateTime.UtcNow;
 
             var validation = await user.CreateOrUpdateValidation(_unitOfWork.Repository);
             result.SetValidationResult(validation);
-            if (result.HasError) return result;
 
-            await _unitOfWork.Repository.UpdateAsync(user);
+            if (result.HasError) 
+                return result;
+
+            _unitOfWork.Repository.Update(user);
             await _unitOfWork.SaveAsync();
 
             result.SetResult(new SuccessPostResponse(user.Id));

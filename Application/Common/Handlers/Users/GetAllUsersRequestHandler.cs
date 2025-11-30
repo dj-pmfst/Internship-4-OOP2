@@ -1,7 +1,8 @@
 ﻿using Application.Common.Model;
 using Application.DTOs.Users;
-using Domain.Persistence.Users;
+using Domain.Common.Validation;
 using Domain.Entities.Users;
+using Domain.Persistence.Users;
 
 namespace Application.Common.Handlers.Users
 {
@@ -20,6 +21,14 @@ namespace Application.Common.Handlers.Users
             if (request.Id.HasValue)
             {
                 var item = await _unitOfWork.Repository.GetByIdAsync(request.Id.Value);
+
+                if (item == null)
+                {
+                    var validationResult = ValidationErrors.NotFound($"Korisnik s ID-em {request.Id.Value}");
+                    result.SetValidationResult(validationResult);
+                    return result;
+                }
+
                 var response = new GetResponse<User>
                 {
                     Items = item != null ? new List<User> { item } : new List<User>()

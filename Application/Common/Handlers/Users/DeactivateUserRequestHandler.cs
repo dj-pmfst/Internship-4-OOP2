@@ -13,14 +13,24 @@ namespace Application.Common.Handlers.Users
         protected override async Task<Result<SuccessResponse>> HandleRequest(DeactivateUserRequest request, Result<SuccessResponse> result)
         {
             var user = await _unitOfWork.Repository.GetByIdAsync(request.Id);
+
             if (user == null)
             {
                 result.SetValidationResult(ValidationErrors.NotFound("User"));
                 return result;
             }
 
+            if (!user.isActive)
+            {
+                result.SetValidationResult(ValidationErrors.AlreadyExists("Deaktivacija korisnika"));
+                return result;
+            }
+
             user.isActive = false;
-            await _unitOfWork.Repository.UpdateAsync(user);
+
+            user.updatedAt = DateTime.UtcNow;
+
+            _unitOfWork.Repository.Update(user);
             await _unitOfWork.SaveAsync();
 
             result.SetResult(new SuccessResponse(true));
@@ -29,7 +39,7 @@ namespace Application.Common.Handlers.Users
 
         protected override Task<bool> IsAuthorized()
         {
-            throw new NotImplementedException();
+            return Task.FromResult(true); 
         }
     }
 }

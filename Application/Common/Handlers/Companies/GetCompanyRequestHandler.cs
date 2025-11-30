@@ -26,14 +26,28 @@ namespace Application.Common.Handlers.Companies
         {
 
             var user = await _userRepository.GetByUsernameAndPasswordAsync(request.Username, request.Password);
-            if (user == null || !user.isActive)
+
+            if (user == null)
             {
-                result.SetValidationResult(
-                    ValidationErrors.FieldIsRequired("Valid active username/password required"));
+                result.SetValidationResult(ValidationErrors.InvalidCredentials());
+                return result;
+            }
+
+            if (!user.isActive)
+            {
+                result.SetValidationResult(ValidationErrors.UserInactive());
                 return result;
             }
 
             var company = await _companyUnitOfWork.Repository.GetByIdAsync(request.Id);
+
+            if (company == null)
+            {
+                var validationResult = ValidationErrors.NotFound($"Kompanija s ID-em {request.Id}");
+                result.SetValidationResult(validationResult);
+                return result;
+            }
+
             var items = company != null ? new List<Company> { company } : new List<Company>();
 
             result.SetResult(new GetResponse<Company> { Items = items });

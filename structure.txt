@@ -21,12 +21,12 @@ C:.
 |       |       .dtbcache.v2
 |       |       
 |       +---FileContentIndex
-|       |       0253c329-8b1d-4e74-9746-e58d6ea7575e.vsidx
-|       |       203dad95-3b27-44fb-aa1e-84d8d19059df.vsidx
-|       |       67ca8fef-9145-4ee0-b42b-128f86b6be36.vsidx
-|       |       6c8d2120-d38f-4d95-8641-cf5a7e6266e7.vsidx
-|       |       99524760-acb0-4137-84f2-03bdd86e8caa.vsidx
-|       |       ff2fcaf4-9ede-4fca-855b-057c07529b76.vsidx
+|       |       08d95a76-7b7e-4e94-bc9c-7d6337389c3b.vsidx
+|       |       8e022f7a-f2b3-45f0-950d-ae39d4fede8e.vsidx
+|       |       9f5b3a77-ca40-4996-8609-2cf464337a9b.vsidx
+|       |       adc91a6d-8407-4a97-95cc-7b41e1394e80.vsidx
+|       |       b1b81468-8de8-429d-8ffa-261342d54139.vsidx
+|       |       e70e0fcf-e1ef-43d1-87bc-fe8bc3adcf37.vsidx
 |       |       
 |       \---v18
 |               .futdcache.v2
@@ -68,11 +68,19 @@ C:.
 |   |           |   Microsoft.EntityFrameworkCore.Relational.dll
 |   |           |   Microsoft.EntityFrameworkCore.SqlServer.dll
 |   |           |   Microsoft.Extensions.Caching.Memory.dll
+|   |           |   Microsoft.Extensions.Configuration.Abstractions.dll
+|   |           |   Microsoft.Extensions.Configuration.Binder.dll
+|   |           |   Microsoft.Extensions.Configuration.dll
 |   |           |   Microsoft.Extensions.DependencyInjection.Abstractions.dll
 |   |           |   Microsoft.Extensions.DependencyInjection.dll
+|   |           |   Microsoft.Extensions.Diagnostics.Abstractions.dll
+|   |           |   Microsoft.Extensions.Diagnostics.dll
+|   |           |   Microsoft.Extensions.Http.dll
 |   |           |   Microsoft.Extensions.Logging.Abstractions.dll
 |   |           |   Microsoft.Extensions.Logging.dll
+|   |           |   Microsoft.Extensions.Options.ConfigurationExtensions.dll
 |   |           |   Microsoft.Extensions.Options.dll
+|   |           |   Microsoft.Extensions.Primitives.dll
 |   |           |   Microsoft.Identity.Client.dll
 |   |           |   Microsoft.Identity.Client.Extensions.Msal.dll
 |   |           |   Microsoft.IdentityModel.Abstractions.dll
@@ -91,6 +99,7 @@ C:.
 |   |           |   Swashbuckle.AspNetCore.SwaggerUI.dll
 |   |           |   System.ClientModel.dll
 |   |           |   System.Configuration.ConfigurationManager.dll
+|   |           |   System.Diagnostics.DiagnosticSource.dll
 |   |           |   System.Drawing.Common.dll
 |   |           |   System.IdentityModel.Tokens.Jwt.dll
 |   |           |   System.Memory.Data.dll
@@ -164,11 +173,17 @@ C:.
 |   |           |   Api.genruntimeconfig.cache
 |   |           |   Api.GlobalUsings.g.cs
 |   |           |   Api.MvcApplicationPartsAssemblyInfo.cache
+|   |           |   Api.MvcApplicationPartsAssemblyInfo.cs
 |   |           |   Api.pdb
 |   |           |   Api.sourcelink.json
+|   |           |   ApiEndpoints.json
 |   |           |   apphost.exe
 |   |           |   staticwebassets.build.json
 |   |           |   
+|   |           +---EndpointInfo
+|   |           |       Api.json
+|   |           |       Api.OpenApiFiles.cache
+|   |           |       
 |   |           +---ref
 |   |           |       Api.dll
 |   |           |       
@@ -326,6 +341,7 @@ C:.
 |   |           |   Domain.AssemblyInfo.cs
 |   |           |   Domain.AssemblyInfoInputs.cache
 |   |           |   Domain.assets.cache
+|   |           |   Domain.csproj.AssemblyReference.cache
 |   |           |   Domain.csproj.BuildWithSkipAnalyzers
 |   |           |   Domain.csproj.CoreCompileInputs.cache
 |   |           |   Domain.csproj.FileListAbsolute.txt
@@ -374,15 +390,16 @@ C:.
     |               Infrastructure.pdb
     |               
     +---Database
-    |   |   ApplicationDBContext.cs
     |   |   Schemas.cs
     |   |   
     |   \---Configuration
     |       +---Companies
     |       |       CompanyConfiguration.cs
+    |       |       CompanyDbContext.cs
     |       |       
     |       \---Users
     |               UserConfiguration.cs
+    |               UserDbContext.cs
     |               
     +---obj
     |   |   Infrastructure.csproj.nuget.dgspec.json
