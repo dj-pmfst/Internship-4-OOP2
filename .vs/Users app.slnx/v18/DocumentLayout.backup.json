@@ -3,24 +3,28 @@
   "WorkspaceRootPath": "C:\\Users\\DORA\\source\\repos\\Users app\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{7718B8E0-B0E5-4AF2-8D99-0A8367E94FFE}|Application\\Application.csproj|c:\\users\\dora\\source\\repos\\users app\\application\\common\\handlers\\users\\updateuserrequesthandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7718B8E0-B0E5-4AF2-8D99-0A8367E94FFE}|Application\\Application.csproj|solutionrelative:application\\common\\handlers\\users\\updateuserrequesthandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{E528BBC3-1C26-8C35-F682-23718816ADCD}|Domain\\Domain.csproj|c:\\users\\dora\\source\\repos\\users app\\domain\\entities\\users\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E528BBC3-1C26-8C35-F682-23718816ADCD}|Domain\\Domain.csproj|solutionrelative:domain\\entities\\users\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E528BBC3-1C26-8C35-F682-23718816ADCD}|Domain\\Domain.csproj|c:\\users\\dora\\source\\repos\\users app\\domain\\common\\validation\\validationpassword.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E528BBC3-1C26-8C35-F682-23718816ADCD}|Domain\\Domain.csproj|solutionrelative:domain\\common\\validation\\validationpassword.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{7718B8E0-B0E5-4AF2-8D99-0A8367E94FFE}|Application\\Application.csproj|c:\\users\\dora\\source\\repos\\users app\\application\\common\\handlers\\users\\importexternalusersrequesthandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7718B8E0-B0E5-4AF2-8D99-0A8367E94FFE}|Application\\Application.csproj|solutionrelative:application\\common\\handlers\\users\\importexternalusersrequesthandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E528BBC3-1C26-8C35-F682-23718816ADCD}|Domain\\Domain.csproj|c:\\users\\dora\\source\\repos\\users app\\domain\\common\\validation\\validationitems\\validationitems.user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E528BBC3-1C26-8C35-F682-23718816ADCD}|Domain\\Domain.csproj|solutionrelative:domain\\common\\validation\\validationitems\\validationitems.user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{E528BBC3-1C26-8C35-F682-23718816ADCD}|Domain\\Domain.csproj|c:\\users\\dora\\source\\repos\\users app\\domain\\common\\validation\\validationhelpers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E528BBC3-1C26-8C35-F682-23718816ADCD}|Domain\\Domain.csproj|solutionrelative:domain\\common\\validation\\validationhelpers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7718B8E0-B0E5-4AF2-8D99-0A8367E94FFE}|Application\\Application.csproj|c:\\users\\dora\\source\\repos\\users app\\application\\common\\handlers\\users\\updateuserrequesthandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7718B8E0-B0E5-4AF2-8D99-0A8367E94FFE}|Application\\Application.csproj|solutionrelative:application\\common\\handlers\\users\\updateuserrequesthandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E528BBC3-1C26-8C35-F682-23718816ADCD}|Domain\\Domain.csproj|c:\\users\\dora\\source\\repos\\users app\\domain\\common\\validation\\validationitems\\validationitems.user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E528BBC3-1C26-8C35-F682-23718816ADCD}|Domain\\Domain.csproj|solutionrelative:domain\\common\\validation\\validationitems\\validationitems.user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{7718B8E0-B0E5-4AF2-8D99-0A8367E94FFE}|Application\\Application.csproj|c:\\users\\dora\\source\\repos\\users app\\application\\dtos\\users\\externaluserdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -53,10 +57,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{E528BBC3-1C26-8C35-F682-23718816ADCD}|Domain\\Domain.csproj|c:\\users\\dora\\source\\repos\\users app\\domain\\common\\validation\\validationresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E528BBC3-1C26-8C35-F682-23718816ADCD}|Domain\\Domain.csproj|solutionrelative:domain\\common\\validation\\validationresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E528BBC3-1C26-8C35-F682-23718816ADCD}|Domain\\Domain.csproj|c:\\users\\dora\\source\\repos\\users app\\domain\\common\\validation\\validationpassword.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E528BBC3-1C26-8C35-F682-23718816ADCD}|Domain\\Domain.csproj|solutionrelative:domain\\common\\validation\\validationpassword.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E528BBC3-1C26-8C35-F682-23718816ADCD}|Domain\\Domain.csproj|c:\\users\\dora\\source\\repos\\users app\\domain\\common\\validation\\validationerrors.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -114,11 +114,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "ValidationItems.User.cs",
               "DocumentMoniker": "C:\\Users\\DORA\\source\\repos\\Users app\\Domain\\Common\\Validation\\ValidationItems\\ValidationItems.User.cs",
               "RelativeDocumentMoniker": "Domain\\Common\\Validation\\ValidationItems\\ValidationItems.User.cs",
@@ -131,71 +131,72 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "ValidationHelpers.cs",
               "DocumentMoniker": "C:\\Users\\DORA\\source\\repos\\Users app\\Domain\\Common\\Validation\\ValidationHelpers.cs",
               "RelativeDocumentMoniker": "Domain\\Common\\Validation\\ValidationHelpers.cs",
               "ToolTip": "C:\\Users\\DORA\\source\\repos\\Users app\\Domain\\Common\\Validation\\ValidationHelpers.cs",
               "RelativeToolTip": "Domain\\Common\\Validation\\ValidationHelpers.cs",
-              "ViewState": "AgIAABMAAAAAAAAAAAAqwCMAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACIAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-30T10:26:21.565Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "ImportExternalUsersRequestHandler.cs",
               "DocumentMoniker": "C:\\Users\\DORA\\source\\repos\\Users app\\Application\\Common\\Handlers\\Users\\ImportExternalUsersRequestHandler.cs",
               "RelativeDocumentMoniker": "Application\\Common\\Handlers\\Users\\ImportExternalUsersRequestHandler.cs",
               "ToolTip": "C:\\Users\\DORA\\source\\repos\\Users app\\Application\\Common\\Handlers\\Users\\ImportExternalUsersRequestHandler.cs",
               "RelativeToolTip": "Application\\Common\\Handlers\\Users\\ImportExternalUsersRequestHandler.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFgAAAAVAAAAAAAAAA==",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAAKAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-30T10:16:41.759Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 2,
               "Title": "ValidationPassword.cs",
               "DocumentMoniker": "C:\\Users\\DORA\\source\\repos\\Users app\\Domain\\Common\\Validation\\ValidationPassword.cs",
               "RelativeDocumentMoniker": "Domain\\Common\\Validation\\ValidationPassword.cs",
               "ToolTip": "C:\\Users\\DORA\\source\\repos\\Users app\\Domain\\Common\\Validation\\ValidationPassword.cs",
               "RelativeToolTip": "Domain\\Common\\Validation\\ValidationPassword.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAqAAAAAAAAAA==",
+              "ViewState": "AgIAADcAAAAAAAAAAAAQwAYAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-30T09:39:08.48Z"
+              "WhenOpened": "2025-11-30T09:39:08.48Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "User.cs",
               "DocumentMoniker": "C:\\Users\\DORA\\source\\repos\\Users app\\Domain\\Entities\\Users\\User.cs",
               "RelativeDocumentMoniker": "Domain\\Entities\\Users\\User.cs",
-              "ToolTip": "C:\\Users\\DORA\\source\\repos\\Users app\\Domain\\Entities\\Users\\User.cs*",
-              "RelativeToolTip": "Domain\\Entities\\Users\\User.cs*",
-              "ViewState": "AgIAABcAAAAAAAAAAAAgwB4AAAAAAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\DORA\\source\\repos\\Users app\\Domain\\Entities\\Users\\User.cs",
+              "RelativeToolTip": "Domain\\Entities\\Users\\User.cs",
+              "ViewState": "AgIAAH4AAAAAAAAAAAAiwB4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-30T09:35:04.142Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 0,
               "Title": "UpdateUserRequestHandler.cs",
               "DocumentMoniker": "C:\\Users\\DORA\\source\\repos\\Users app\\Application\\Common\\Handlers\\Users\\UpdateUserRequestHandler.cs",
               "RelativeDocumentMoniker": "Application\\Common\\Handlers\\Users\\UpdateUserRequestHandler.cs",
               "ToolTip": "C:\\Users\\DORA\\source\\repos\\Users app\\Application\\Common\\Handlers\\Users\\UpdateUserRequestHandler.cs",
               "RelativeToolTip": "Application\\Common\\Handlers\\Users\\UpdateUserRequestHandler.cs",
-              "ViewState": "AgIAAA0AAAAAAAAAAAAxwBEAAAAZAAAAAAAAAA==",
+              "ViewState": "AgIAAAsAAAAAAAAAAAA+wBIAAAArAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-30T08:31:16.904Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "ExternalUserDTO.cs",
               "DocumentMoniker": "C:\\Users\\DORA\\source\\repos\\Users app\\Application\\DTOs\\Users\\ExternalUserDTO.cs",
               "RelativeDocumentMoniker": "Application\\DTOs\\Users\\ExternalUserDTO.cs",
@@ -203,12 +204,11 @@
               "RelativeToolTip": "Application\\DTOs\\Users\\ExternalUserDTO.cs",
               "ViewState": "AgIAABoAAAAAAAAAAAAswAQAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-30T10:14:16.777Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-30T10:14:16.777Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "UserController.cs",
               "DocumentMoniker": "C:\\Users\\DORA\\source\\repos\\Users app\\Api\\Controllers\\UserController.cs",
               "RelativeDocumentMoniker": "Api\\Controllers\\UserController.cs",
@@ -216,12 +216,11 @@
               "RelativeToolTip": "Api\\Controllers\\UserController.cs",
               "ViewState": "AgIAAEIAAAAAAAAAAAAswFgAAABJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-30T10:20:12.924Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-30T10:20:12.924Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "DependencyInjection.cs",
               "DocumentMoniker": "C:\\Users\\DORA\\source\\repos\\Users app\\Infrastructure\\DependencyInjection.cs",
               "RelativeDocumentMoniker": "Infrastructure\\DependencyInjection.cs",
@@ -229,12 +228,11 @@
               "RelativeToolTip": "Infrastructure\\DependencyInjection.cs",
               "ViewState": "AgIAADIAAAAAAAAAAAAswEIAAAAiAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-29T21:26:46.647Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-29T21:26:46.647Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "ExternalUserApiClient.cs",
               "DocumentMoniker": "C:\\Users\\DORA\\source\\repos\\Users app\\Infrastructure\\Services\\External\\ExternalUserApiClient.cs",
               "RelativeDocumentMoniker": "Infrastructure\\Services\\External\\ExternalUserApiClient.cs",
@@ -242,12 +240,11 @@
               "RelativeToolTip": "Infrastructure\\Services\\External\\ExternalUserApiClient.cs",
               "ViewState": "AgIAAAYAAAAAAAAAAAAAAAAAAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-30T10:12:44.378Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-30T10:12:44.378Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "UserConfiguration.cs",
               "DocumentMoniker": "C:\\Users\\DORA\\source\\repos\\Users app\\Infrastructure\\Database\\Configuration\\Users\\UserConfiguration.cs",
               "RelativeDocumentMoniker": "Infrastructure\\Database\\Configuration\\Users\\UserConfiguration.cs",
@@ -255,12 +252,11 @@
               "RelativeToolTip": "Infrastructure\\Database\\Configuration\\Users\\UserConfiguration.cs",
               "ViewState": "AgIAAB4AAAAAAAAAAAArwDIAAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-29T23:43:42.646Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-29T23:43:42.646Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "CreateUserRequestHandler.cs",
               "DocumentMoniker": "C:\\Users\\DORA\\source\\repos\\Users app\\Application\\Common\\Handlers\\Users\\CreateUserRequestHandler.cs",
               "RelativeDocumentMoniker": "Application\\Common\\Handlers\\Users\\CreateUserRequestHandler.cs",
@@ -272,7 +268,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\DORA\\source\\repos\\Users app\\Api\\appsettings.json",
               "RelativeDocumentMoniker": "Api\\appsettings.json",
@@ -280,8 +276,7 @@
               "RelativeToolTip": "Api\\appsettings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-11-29T21:45:21.98Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-29T21:45:21.98Z"
             },
             {
               "$type": "Document",
@@ -297,7 +292,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 13,
               "Title": "ValidationResult.cs",
               "DocumentMoniker": "C:\\Users\\DORA\\source\\repos\\Users app\\Domain\\Common\\Validation\\ValidationResult.cs",
               "RelativeDocumentMoniker": "Domain\\Common\\Validation\\ValidationResult.cs",

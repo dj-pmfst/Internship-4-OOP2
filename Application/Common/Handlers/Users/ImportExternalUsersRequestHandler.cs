@@ -158,13 +158,7 @@ namespace Application.Common.Handlers.Users
         {
             return Task.FromResult(true);
         }
-        private bool IsValidCoordinate(decimal lat, decimal lng)
-        {
-            return lat >= -90 && lat <= 90 && lng >= -180 && lng <= 180;
-        }
 
-        private const decimal referenceLat = 40.15m;
-        private const decimal referenceLng = 20.102m;
     }
 
     public class ImportExternalUsersResponse
