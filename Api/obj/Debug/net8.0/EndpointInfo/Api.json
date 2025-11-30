@@ -401,11 +401,11 @@
             "type": "string",
             "nullable": true
           },
-          "adressStreet": {
+          "addressStreet": {
             "type": "string",
             "nullable": true
           },
-          "adressCity": {
+          "addressCity": {
             "type": "string",
             "nullable": true
           },
@@ -477,11 +477,11 @@
             "type": "string",
             "nullable": true
           },
-          "adressStreet": {
+          "addressStreet": {
             "type": "string",
             "nullable": true
           },
-          "adressCity": {
+          "addressCity": {
             "type": "string",
             "nullable": true
           },

@@ -45,7 +45,7 @@
         {
             var result = new ValidationResult();
             result.AddValidationItem(new ValidationItem( 
-                code: "INVALID_CREDENTIALS",
+                code: "InvalidCredentials",
                 message: "Neispravan username ili lozinka. ",
                 severity: ValidationSeverity.Error
             ));
@@ -56,7 +56,7 @@
         {
             var result = new ValidationResult();
             result.AddValidationItem(new ValidationItem( 
-                code: "USER_INACTIVE",
+                code: "UserInactive",
                 message: "User account is deactivated.",
                 severity: ValidationSeverity.Error
             ));

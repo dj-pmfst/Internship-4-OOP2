@@ -43,21 +43,21 @@ namespace Infrastructure.Database.Configuration.Users
                 .HasMaxLength(255)
                 .HasColumnName("password");
 
-            builder.Property(u => u.adressStreet)
+            builder.Property(u => u.AddressStreet)
                 .IsRequired()
                 .HasMaxLength(User.StreetMaxLength)
                 .HasColumnName("address_street");
 
-            builder.Property(u => u.adressCity)
+            builder.Property(u => u.AddressCity)
                 .IsRequired()
                 .HasMaxLength(User.CityMaxLength)
                 .HasColumnName("address_city");
 
-            builder.Property(u => u.geoLat)
+            builder.Property(u => u.GeoLat)
                 .HasColumnName("geo_lat")
                 .HasColumnType("decimal(18,6)");
 
-            builder.Property(u => u.geoLng)
+            builder.Property(u => u.GeoLng)
                 .HasColumnName("geo_lng")
                 .HasColumnType("decimal(18,6)");
 

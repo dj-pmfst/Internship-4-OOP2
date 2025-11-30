@@ -2,6 +2,7 @@
 using Domain.Common.Model;
 using Domain.Common.Validation;
 using Domain.Common.Validation.ValidationItems;
+using Domain.Common.Validators;
 using Domain.Persistence.Users;
 
 namespace Domain.Entities.Users
@@ -18,10 +19,10 @@ namespace Domain.Entities.Users
         public DateOnly DoB {  get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
-        public string adressStreet { get; set; }
-        public string adressCity { get; set; }
-        public decimal geoLat { get; set; }
-        public decimal geoLng { get; set; }
+        public string AddressStreet { get; set; }
+        public string AddressCity { get; set; }
+        public decimal GeoLat { get; set; }
+        public decimal GeoLng { get; set; }
         public string? website { get; set; }
         public DateTime createdAt { get; set; }
         public DateTime updatedAt { get; set; }
@@ -42,6 +43,7 @@ namespace Domain.Entities.Users
         {
             var validationResult = new ValidationResult();
 
+
             if (string.IsNullOrWhiteSpace(Name))
                 AddValidationResult(validationResult, ValidationErrors.FieldIsRequired("Name"));
 
@@ -57,24 +59,36 @@ namespace Domain.Entities.Users
             if (string.IsNullOrWhiteSpace(Password))
                 AddValidationResult(validationResult, ValidationErrors.FieldIsRequired("Password"));
 
-            if (string.IsNullOrWhiteSpace(adressStreet))
+            if (string.IsNullOrWhiteSpace(AddressStreet))
                 AddValidationResult(validationResult, ValidationErrors.FieldIsRequired("Address Street"));
 
-            if (string.IsNullOrWhiteSpace(adressCity))
+            if (string.IsNullOrWhiteSpace(AddressCity))
                 AddValidationResult(validationResult, ValidationErrors.FieldIsRequired("Address City"));
 
-            if (geoLat == 0)
+            if (GeoLat == 0)
                 AddValidationResult(validationResult, ValidationErrors.FieldIsRequired("Latitude"));
 
-            if (geoLng == 0)
+            if (GeoLng == 0)
                 AddValidationResult(validationResult, ValidationErrors.FieldIsRequired("Longitude"));
 
             if (validationResult.HasError)
                 return validationResult;
 
+
+            if (!string.IsNullOrWhiteSpace(Password))
+            {
+                var passwordValidation = ValidationPassword.Validate(Password);
+                if (passwordValidation.HasError)
+                {
+                    AddValidationResult(validationResult, passwordValidation);
+                    return validationResult; 
+                }
+            }
+
+
             if (Name?.Length > FirstNameMaxLength)
             {
-                validationResult.AddValidationItem(ValidationItems.User.FirstNameMaxLength); 
+                validationResult.AddValidationItem(ValidationItems.User.FirstNameMaxLength);
             }
 
             if (Surname?.Length > SurnameMaxLength)
@@ -87,12 +101,12 @@ namespace Domain.Entities.Users
                 validationResult = ValidationErrors.AlreadyExists("Username");
             }
 
-            if (adressStreet?.Length > StreetMaxLength)
+            if (AddressStreet?.Length > StreetMaxLength)
             {
                 validationResult.AddValidationItem(ValidationItems.User.StreetMaxLength);
             }
 
-            if (adressCity?.Length > CityMaxLength)
+            if (AddressCity?.Length > CityMaxLength)
             {
                 validationResult.AddValidationItem(ValidationItems.User.CityMaxLength);
             }
@@ -113,9 +127,9 @@ namespace Domain.Entities.Users
             }
 
             var existingUsers = await userRepository.GetAll();
-            if (existingUsers.Values.Any(u => u.Id != Id)) 
+            if (existingUsers.Values.Any(u => u.Id != Id))
             {
-                if (!await userRepository.IsWithin3KmAsync(geoLat, geoLng, Id))
+                if (!await userRepository.IsWithin3KmAsync(GeoLat, GeoLng, Id))
                 {
                     validationResult.AddValidationItem(ValidationItems.User.UserTooFar);
                 }

@@ -1,5 +1,6 @@
 ﻿using Application.Common.Model;
 using Domain.Common.Validation;
+using Domain.Common.Validators;
 using Domain.Persistence.Users;
 
 namespace Application.Common.Handlers.Users
@@ -13,10 +14,10 @@ namespace Application.Common.Handlers.Users
         public DateOnly DoB { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
-        public string adressStreet { get; set; }
-        public string adressCity { get; set; }
-        public decimal geoLat { get; set; }
-        public decimal geoLng { get; set; }
+        public string AddressStreet { get; set; }
+        public string AddressCity { get; set; }
+        public decimal GeoLat { get; set; }
+        public decimal GeoLng { get; set; }
         public string? website { get; set; }
         public DateTime createdAt { get; set; }
         public DateTime updatedAt { get; set; }
@@ -45,12 +46,22 @@ namespace Application.Common.Handlers.Users
             user.DoB = request.DoB;
             user.Email = request.Email;
             user.Password = request.Password;
-            user.adressStreet = request.adressStreet;
-            user.adressCity = request.adressCity;
-            user.geoLat = request.geoLat;
-            user.geoLng = request.geoLng;
+            user.AddressStreet = request.AddressStreet;
+            user.AddressCity = request.AddressCity;
+            user.GeoLat = request.GeoLat;
+            user.GeoLng = request.GeoLng;
             user.website = request.website;
             user.updatedAt = DateTime.UtcNow;
+
+            if (!string.IsNullOrWhiteSpace(request.Password))
+            {
+                var passwordValidation = ValidationPassword.Validate(request.Password);
+                if (passwordValidation.HasError)
+                {
+                    result.SetValidationResult(passwordValidation);
+                    return result;
+                }
+            }
 
             var validation = await user.CreateOrUpdateValidation(_unitOfWork.Repository);
             result.SetValidationResult(validation);

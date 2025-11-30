@@ -1,5 +1,6 @@
 ﻿using Application.Common.Model;
 using Domain.Common.Validation;
+using Domain.Common.Validators;
 using Domain.Persistence.Users;
 
 namespace Application.Common.Handlers.Users
@@ -13,10 +14,10 @@ namespace Application.Common.Handlers.Users
         public DateOnly DoB { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
-        public string adressStreet { get; set; }
-        public string adressCity { get; set; }
-        public decimal geoLat { get; set; }
-        public decimal geoLng { get; set; }
+        public string AddressStreet { get; set; }
+        public string AddressCity { get; set; }
+        public decimal GeoLat { get; set; }
+        public decimal GeoLng { get; set; }
         public string? website { get; set; }
         public DateTime createdAt { get; set; }
         public DateTime updatedAt { get; set; }
@@ -31,6 +32,13 @@ namespace Application.Common.Handlers.Users
 
         protected async override Task<Result<SuccessPostResponse>> HandleRequest(CreateUserRequest request, Result<SuccessPostResponse> result)
         {
+            var passwordValidation = ValidationPassword.Validate(request.Password);
+            if (!passwordValidation.HasError)
+            {
+                result.SetValidationResult(passwordValidation);
+                return result;
+            }
+
             var user = new Domain.Entities.Users.User
             {
                 Name = request.Name,
@@ -39,10 +47,10 @@ namespace Application.Common.Handlers.Users
                 DoB = request.DoB,
                 Email = request.Email,
                 Password = request.Password,
-                adressStreet = request.adressStreet,
-                adressCity = request.adressCity,
-                geoLat = request.geoLat,
-                geoLng = request.geoLng,
+                AddressStreet = request.AddressStreet,
+                AddressCity = request.AddressCity,
+                GeoLat = request.GeoLat,
+                GeoLng = request.GeoLng,
                 website = request.website,
                 createdAt = DateTime.UtcNow,
                 updatedAt = DateTime.UtcNow

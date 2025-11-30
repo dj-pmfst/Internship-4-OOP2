@@ -27,10 +27,10 @@ namespace Infrastructure.Repositories.Users
                             dob AS DoB,
                             email AS Email,
                             password AS Password,
-                            address_street AS adressStreet,
-                            address_city AS adressCity, 
-                            geolat AS geoLat,
-                            geolng AS geoLng,
+                            address_street AS AdressStreet,
+                            address_city AS AdressCity, 
+                            geolat AS GeoLat,
+                            geolng AS GeoLng,
                             website AS Website,
                             createdat AS createdAt,
                             updatedat AS updatedAt,
@@ -80,8 +80,8 @@ namespace Infrastructure.Repositories.Users
             foreach (var user in users)
             {
                 var distance = GeoHelper.DistanceInKm(
-                    user.geoLat,
-                    user.geoLng,
+                    user.GeoLat,
+                    user.GeoLng,
                     latitude,
                     longitude
                 );
